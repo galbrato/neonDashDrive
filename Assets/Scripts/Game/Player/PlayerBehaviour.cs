@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour
-{
+public class PlayerBehaviour : MonoBehaviour{
+    TileMovement Movement;
+
+    private void Awake() {
+        Movement = GetComponent<TileMovement>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
