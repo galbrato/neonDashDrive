@@ -16,7 +16,6 @@ public enum InputType {
 }
 
 public class InputManager : MonoBehaviour {
-
     public static InputManager instance = null;
 
     void Awake() {
@@ -34,77 +33,8 @@ public class InputManager : MonoBehaviour {
 
     // Start is called before the first frame update
     static List<PlayerController> Players;
-   
-
-    static bool inlobby = true;
-
-    public GameObject[] playerTokens;
-
-    public GameObject[] arrows;
-
-    public GameObject readyButton;
-
+ 
     int connectedPlayers = 0;
-
-    public void ConnectPlayer(int index, PlayerController controller)
-    {
-        connectedPlayers++;
-        if (connectedPlayers > 0)
-        {
-            readyButton.SetActive(true);
-        }
-        switch (index)
-        {
-            case 0:
-                Player0 = controller;
-                break;
-            case 1:
-                Player1 = controller;
-                break;
-            case 2:
-                Player2 = controller;
-                break;
-            case 3:
-                Player3 = controller;
-                break;
-
-        }
-        arrows[index].SetActive(true);
-        playerTokens[index].SetActive(true);
-        //show client which token he is
-    }
-
-    public void DisconnectPlayer(int index)
-    {
-        connectedPlayers--;
-        if (connectedPlayers == 0)
-        {
-            readyButton.SetActive(false);
-        }
-        switch (index)
-        {
-            case 0:
-                Player0 = null;
-                break;
-            case 1:
-                Player1 = null;
-                break;
-            case 2:
-                Player2 = null;
-                break;
-            case 3:
-                Player3 = null;
-                break;
-
-        }
-        arrows[index].SetActive(false);
-        playerTokens[index].SetActive(false);
-    }
-
-    public void StartGame()
-    {
-        inlobby = false;
-    }
 
     enum InputSourceType {
         Lan,
@@ -115,21 +45,22 @@ public class InputManager : MonoBehaviour {
 
     
     public static PlayerController GetPlayerInput(int index) {
-        switch (index) {
-            case 0:
-                return Player0;
-            case 1:
-                return Player1;
-            case 2:
-                return Player2;
-            case 3:
-                return Player3;
-            default:
-                break;
+        if (Players != null) {
+            if (index < Players.Count) {
+                return Players[index];
+            } else {
+                Debug.LogError("Player" + index + " não existe");
+                return Players[0];
+            }
+        } else {
+            Debug.Log("Criando player padrão");
+            Players = new List<PlayerController>();
+            Players.Add(new KeyboardController());
+            return Players[0];
         }
-        return null;
     }
 }
+
 public abstract class PlayerController {
     public string Name;
 
@@ -137,4 +68,55 @@ public abstract class PlayerController {
     public abstract float GetVertical();
     public abstract bool GetConfirmation();
     public abstract bool GetCancel();
+}
+
+public class KeyboardController : PlayerController {
+    public override bool GetCancel() {
+        return Input.GetButtonDown("Cancel");
+    }
+
+    public override bool GetConfirmation() {
+        return Input.GetButtonUp("Submit");
+    }
+
+    public override float GetHorizontal() {
+        if (Input.GetKeyDown(KeyCode.D)) {
+            return 1;
+        }else if (Input.GetKeyDown(KeyCode.A)) {
+            return -1;
+        }
+        return 0;
+    }
+
+    public override float GetVertical() {
+        if (Input.GetKeyDown(KeyCode.W)) {
+            return 1;
+        } else if (Input.GetKeyDown(KeyCode.S)) {
+            return -1;
+        }
+        return 0;
+    }
+}
+
+
+public class DefaultPlayerController : PlayerController {
+    public override bool GetCancel() {
+        Debug.LogError("Retornando valor padrão");
+        return false;
+    }
+
+    public override bool GetConfirmation() {
+        Debug.LogError("Retornando valor padrão");
+        return false;
+    }
+
+    public override float GetHorizontal() {
+        Debug.LogError("Retornando valor padrão");
+        return 0;
+    }
+
+    public override float GetVertical() {
+        Debug.LogError("Retornando valor padrão");
+        return 0;
+    }
 }

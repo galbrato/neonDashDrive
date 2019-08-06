@@ -16,8 +16,22 @@ public class PlayerBehaviour : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        Move();
+    }
+
+    void Move() {
+        if (InputManager.GetPlayerInput(0).GetHorizontal() > 0 ) {
+            Movement.MoveRight();
+        }
+        if (InputManager.GetPlayerInput(0).GetHorizontal() < 0) {
+            Movement.MoveLeft();
+        }
+        if (InputManager.GetPlayerInput(0).GetVertical() > 0) {
+            Movement.MoveUp();
+        }
+        if (InputManager.GetPlayerInput(0).GetVertical() < 0) {
+            Movement.MoveDown();
+        }
     }
 }
