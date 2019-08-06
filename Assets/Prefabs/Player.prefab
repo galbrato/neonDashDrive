@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7538505589449833831}
   - component: {fileID: 7538505589449833830}
   - component: {fileID: 1044723503433847443}
+  - component: {fileID: 5934215988841502663}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -104,3 +105,16 @@ MonoBehaviour:
   projectilesPrefab: {fileID: 7919932114093990307, guid: e2dc1d52bed5b9748b87fb5453c4b001,
     type: 3}
   canShoot: 1
+--- !u!114 &5934215988841502663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7538505589449833829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: 
