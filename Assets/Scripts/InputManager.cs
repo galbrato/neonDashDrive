@@ -16,26 +16,11 @@ public enum InputType {
 }
 
 public class InputManager : MonoBehaviour {
-    public static InputManager instance = null;
-
-    void Awake() {
-        //Check if instance already exists
-        if (instance == null)
-            instance = this;
-
-        //Destroy the fake
-        else if (instance != this)
-            Destroy(gameObject);
-
-        //Dont destroy the ruler
-        //DontDestroyOnLoad(gameObject);
-    }
+    public static float TouchSwipeDeltaPosition = 100f;
 
     // Start is called before the first frame update
     static List<PlayerController> Players;
  
-    int connectedPlayers = 0;
-
     enum InputSourceType {
         Lan,
         Controller,
@@ -68,6 +53,38 @@ public abstract class PlayerController {
     public abstract float GetVertical();
     public abstract bool GetConfirmation();
     public abstract bool GetCancel();
+}
+
+public class TouchController : PlayerController {
+
+    Touch ActualTouch;
+    InputType actualInput;
+    void HandleTouch() {
+        if (Input.touchCount > 0) {
+            if (Input.GetTouch(0).phase == TouchPhase.Began) {
+                ActualTouch = Input.GetTouch(0);
+            }
+            if (ActualTouch.deltaPosition.magnitude > InputManager.TouchSwipeDeltaPosition) {
+
+            }
+        }
+    }
+
+    public override bool GetCancel() {
+        HandleTouch()
+    }
+
+    public override bool GetConfirmation() {
+        HandleTouch()
+    }
+
+    public override float GetHorizontal() {
+        HandleTouch()
+    }
+
+    public override float GetVertical() {
+        HandleTouch()
+    }
 }
 
 public class KeyboardController : PlayerController {
