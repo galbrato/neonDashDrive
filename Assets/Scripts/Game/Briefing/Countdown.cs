@@ -16,14 +16,13 @@ public class Countdown : MonoBehaviour
 
     public void StartCountdown()
     {
-        animator.SetTrigger("StartCountdown");
+        animator?.SetTrigger("StartCountdown");
         StartCoroutine(CountdownDelay());
     }
 
     IEnumerator CountdownDelay()
     {
         yield return new WaitForSeconds(totalDelay);
-        //matchManager.OnGameStart?.Invoke();
         OnCountdownEnd?.Invoke();
     }
 }

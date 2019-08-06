@@ -6,6 +6,7 @@ public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
     [SerializeField] HUDManager hudManager = null;
+    [SerializeField] Countdown countdown = null;
 
     GameObject playerReference;
 
@@ -25,7 +26,8 @@ public class MatchManager : MonoBehaviour
 
         //start briefing
             //subscribe to onBriefingEnd
-                      
+
+        EndBriefing(); //temp
     }
 
 
@@ -38,14 +40,13 @@ public class MatchManager : MonoBehaviour
 
     public void StartCountdown()
     {
-        
-        //start countdown script
-            //subscribe to onCountdownEnd
+        countdown.OnCountdownEnd += EndCountdown;
+        countdown.StartCountdown();
     }
 
     public void EndCountdown()
     {
-        //remove subscribe
+        countdown.OnCountdownEnd -= EndCountdown;
 
         //start enemy spawn
         //allow player inputs
