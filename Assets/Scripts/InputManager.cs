@@ -16,7 +16,7 @@ public enum InputType {
 }
 
 public class InputManager : MonoBehaviour {
-    public static float TouchSwipeDeltaPosition = 100f;
+    public static float TouchSwipeDeltaPosition = 70f;
 
     // Start is called before the first frame update
     static List<PlayerController> Players;
@@ -26,8 +26,22 @@ public class InputManager : MonoBehaviour {
         Controller,
         Arrows
     }
-    
 
+    static void  InitializePlayers() {
+        Debug.Log("Criando player padrão");
+        Players = new List<PlayerController>();
+        Players.Add(new KeyboardController());
+
+    }
+
+    public static void MakeTouchPlayer(int index) {
+        if (Players == null)InitializePlayers();
+        if (index < Players.Count) {
+            Players[index] = new TouchController();
+        }
+    }
+
+    
     
     public static PlayerController GetPlayerInput(int index) {
         if (Players != null) {
@@ -38,13 +52,12 @@ public class InputManager : MonoBehaviour {
                 return Players[0];
             }
         } else {
-            Debug.Log("Criando player padrão");
-            Players = new List<PlayerController>();
-            Players.Add(new KeyboardController());
+            InitializePlayers();
             return Players[0];
         }
     }
 }
+
 
 public abstract class PlayerController {
     public string Name;
@@ -57,33 +70,78 @@ public abstract class PlayerController {
 
 public class TouchController : PlayerController {
 
-    Touch ActualTouch;
     InputType actualInput;
-    void HandleTouch() {
-        if (Input.touchCount > 0) {
-            if (Input.GetTouch(0).phase == TouchPhase.Began) {
-                ActualTouch = Input.GetTouch(0);
-            }
-            if (ActualTouch.deltaPosition.magnitude > InputManager.TouchSwipeDeltaPosition) {
 
+    //Variavel apra executar o handle uma vez por update
+    float toucheInputMoment;
+
+    Vector2 startPosition;
+    bool isToching = false;
+    void HandleTouch() {
+        if (toucheInputMoment != Time.time) {
+            toucheInputMoment = Time.time;
+            actualInput = InputType.None;
+            if (Input.touchCount > 0) {
+                if (!isToching && Input.GetTouch(0).phase == TouchPhase.Began) {
+                    isToching = true;
+                    startPosition = Input.GetTouch(0).position;
+                }
+                Vector2 DeltaPosition = Input.GetTouch(0).position - startPosition;
+                if (isToching && Input.GetTouch(0).phase == TouchPhase.Ended) {
+                    Debug.Log("SwipeDistance : " + DeltaPosition.magnitude);
+                    isToching = false;
+                }
+                if (isToching && DeltaPosition.magnitude > InputManager.TouchSwipeDeltaPosition) {
+                    //SwipeFeito
+                    Vector2 dir = Input.GetTouch(0).deltaPosition;
+                    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y)) {
+                        if (dir.x >= 0) {
+                            actualInput = InputType.Right;
+                        } else {
+                            actualInput = InputType.Left;
+                        }
+                    } else {
+                        if (dir.y >= 0) {
+                            actualInput = InputType.Up;
+                        } else {
+                            actualInput = InputType.Down;
+                        }
+                    }
+                    Debug.Log("SwipeDistance : " + DeltaPosition.magnitude);
+                    isToching = false;
+                }
             }
-        }
+        } 
     }
 
     public override bool GetCancel() {
-        HandleTouch()
+        HandleTouch();
+        return (actualInput == InputType.Cancel);
     }
 
     public override bool GetConfirmation() {
-        HandleTouch()
+        HandleTouch();
+        return (actualInput == InputType.Confirmation);
     }
 
     public override float GetHorizontal() {
-        HandleTouch()
+        HandleTouch();
+        if (actualInput == InputType.Right) {
+            return 1;
+        } else if (actualInput == InputType.Left) {
+            return -1;
+        }
+        return 0;
     }
 
     public override float GetVertical() {
-        HandleTouch()
+        HandleTouch();
+        if (actualInput == InputType.Up) {
+            return 1;
+        } else if (actualInput == InputType.Down) {
+            return -1;
+        }
+        return 0;
     }
 }
 
