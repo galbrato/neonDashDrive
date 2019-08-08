@@ -59,7 +59,7 @@ public class MatchManager : MonoBehaviour
     
     public void PlayerDeath()
     {
-
+        
     }
 
     //change this to inside the player behaviour
