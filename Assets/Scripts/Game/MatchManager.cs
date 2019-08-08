@@ -6,10 +6,10 @@ public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
     [SerializeField] HUDManager hudManager = null;
+    [SerializeField] Countdown countdown = null;
+    [SerializeField] PlayerAttributes playerAttributes = null;
 
     GameObject playerReference;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,14 @@ public class MatchManager : MonoBehaviour
 
         hudManager.InitializeHUD();
 
-        //subscribe to player ondeath
+        //delegate subscriptions
+        playerReference.GetComponent<TakeDamage>().OnTakeDamage += PlayerTakeDamage;
 
         //start briefing
             //subscribe to onBriefingEnd
-                      
-    }
 
+        EndBriefing(); //temp
+    }
 
     public void EndBriefing()
     {
@@ -38,27 +39,38 @@ public class MatchManager : MonoBehaviour
 
     public void StartCountdown()
     {
-        
-        //start countdown script
-            //subscribe to onCountdownEnd
+        countdown.OnCountdownEnd += EndCountdown;
+        countdown.StartCountdown();
     }
 
     public void EndCountdown()
     {
-        //remove subscribe
+        countdown.OnCountdownEnd -= EndCountdown;
 
         //start enemy spawn
         //allow player inputs
         //allow player shoot  
     }
-
+    
     public void PlayerPickupLife()
     {
 
     }
-
+    
     public void PlayerDeath()
     {
 
     }
+
+    //change this to inside the player behaviour
+    public void PlayerTakeDamage()
+    {
+        if (playerAttributes.shield)
+        {
+            //lose shield
+        }
+        else
+            PlayerDeath();
+    }
+
 }
