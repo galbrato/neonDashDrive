@@ -8,7 +8,6 @@ public class AutoShoot : MonoBehaviour
     [SerializeField] float shootMultiplier = 0;
 
     [SerializeField] Vector3[] spawnPositions = null;
-    [SerializeField] Vector3[] velocities = null;
 
     [SerializeField] GameObject projectilesPrefab = null;
 
@@ -37,7 +36,6 @@ public class AutoShoot : MonoBehaviour
             for (int i = 0; i < spawnPositions.Length; i++)
             {
                 obj = Instantiate(projectilesPrefab, transform.position + spawnPositions[i], Quaternion.identity, projectilesParent);
-                obj.GetComponent<Rigidbody2D>().velocity = velocities[i];
                 //obj.GetComponent<ProjectileBehaviour>().myShooter = gameObject;
             }
 
