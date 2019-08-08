@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileMovement : MonoBehaviour{
     public Tile ActualTile;
+    
+    private Tile NextTile;
 
     [SerializeField] float VerticalDuration = 1f;
     [SerializeField] float HorizontalDuration = 1f;
@@ -13,8 +15,10 @@ public class TileMovement : MonoBehaviour{
     float CurveTime;
 
     public bool isMoving;
+    
 
     public bool canMove = false;
+    [SerializeField] bool WillBuffer;
 
     // Start is called before the first frame update
     void Start(){
@@ -27,26 +31,6 @@ public class TileMovement : MonoBehaviour{
         if (ActualTile == null) {
             ActualTile = FindObjectOfType<Tile>();
             isMoving = true;
-        }
-        
-        if (!isMoving && canMove) {
-            //Input temporario
-            if (Input.GetKeyDown(KeyCode.W)) {
-                //MoveUp
-                MoveUp();
-            }
-            if (Input.GetKeyDown(KeyCode.D)) {
-                //MoveRight
-                MoveRight();
-            }
-            if (Input.GetKeyDown(KeyCode.S)) {
-                //MoveDown
-                MoveDown();
-            }
-            if (Input.GetKeyDown(KeyCode.A)) {
-                //MoveLeft
-                MoveLeft();
-            }
         }
 
         Move();
@@ -61,12 +45,19 @@ public class TileMovement : MonoBehaviour{
         Vector2 Direction = Destination - myPosition;
 
         if (Direction.magnitude <= 0.01f) {
-            isMoving = false;
             transform.position = ActualTile.transform.position;
             formerPosition = transform.position;
             CurveTime = 0;
+            isMoving = false;
+
+            if (NextTile!=null && !NextTile.isOccupied) {
+                TileSwap(NextTile);
+            }
+            NextTile = null;
+
             return;
         }
+
         float duration;
         if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y)) {
             duration = HorizontalDuration;
@@ -77,52 +68,51 @@ public class TileMovement : MonoBehaviour{
         transform.position = Vector2.Lerp(formerPosition, Destination, Curve.Evaluate(CurveTime/duration));//tem que mudar isso pra a movimentaçao depender da duração
     }
 
-    public bool MoveUp() {
-        if (isMoving || !canMove) return false;
-
-        if (ActualTile.upTile != null && !ActualTile.upTile.isOccupied) {
-            TileSwap(ActualTile.upTile);
-            isMoving = true;
-            return true;
+    public void MoveUp() {
+        if (ActualTile.upTile != null && canMove) {
+            if (isMoving) {
+                if(WillBuffer)NextTile = ActualTile.upTile;
+            } else if (!ActualTile.upTile.isOccupied) {
+                TileSwap(ActualTile.upTile);
+            }
         }
-        return false;  
+        return;  
+    }
+    public void MoveDown() {
+        if (ActualTile.downTile != null && canMove) {
+            if (isMoving) {
+                if (WillBuffer) NextTile = ActualTile.downTile;
+            } else if (!ActualTile.downTile.isOccupied) {
+                TileSwap(ActualTile.downTile);
+            }
+        }
+        return;
+    }
+    public void MoveRight() {
+        if (ActualTile.rightTile != null && canMove) {
+            if (isMoving) {
+                if (WillBuffer) NextTile = ActualTile.rightTile;
+            } else if (!ActualTile.rightTile.isOccupied) {
+                TileSwap(ActualTile.rightTile);
+            }
+        }
+        return;
+    }
+    public void MoveLeft() {
+        if (ActualTile.leftTile != null && canMove) {
+            if (isMoving) {
+                if (WillBuffer) NextTile = ActualTile.leftTile;
+            } else if (!ActualTile.leftTile.isOccupied) {
+                TileSwap(ActualTile.leftTile);
+            }
+        }
+        return;
     }
 
-    public bool MoveRight() {
-        if (isMoving || !canMove) return false;
-
-        if (ActualTile.rightTile != null && !ActualTile.rightTile.isOccupied) {
-            TileSwap(ActualTile.rightTile);
-            isMoving = true;
-            return true;
-        }
-        return false;
-    }
-
-    public bool MoveDown() {
-        if (isMoving || !canMove) return false;
-
-        if (ActualTile.downTile != null && !ActualTile.downTile.isOccupied) {
-            TileSwap(ActualTile.downTile);
-            isMoving = true;
-            return true;
-        }
-        return false;
-    }
-
-    public bool MoveLeft() {
-        if (isMoving || !canMove) return false;
-
-        if (ActualTile.leftTile != null && !ActualTile.leftTile.isOccupied) {
-            TileSwap( ActualTile.leftTile);
-            isMoving = true;
-            return true;
-        }
-        return false;
-    }
     void TileSwap(Tile newTile) {
         ActualTile.isOccupied = false;
         ActualTile = newTile;
         ActualTile.isOccupied = true;
+        isMoving = true;
     }
 }
