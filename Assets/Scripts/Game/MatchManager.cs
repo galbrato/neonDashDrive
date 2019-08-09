@@ -5,9 +5,10 @@ using UnityEngine;
 public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
+    [SerializeField] EnemySpawner enemySpawner = null;
     [SerializeField] HUDManager hudManager = null;
     [SerializeField] Countdown countdown = null;
-    [SerializeField] PlayerAttributes playerAttributes = null;
+    [SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
 
     GameObject playerReference;
 
@@ -47,7 +48,7 @@ public class MatchManager : MonoBehaviour
     {
         countdown.OnCountdownEnd -= EndCountdown;
 
-        //start enemy spawn
+        enemySpawner.StartSpawn();
         //allow player inputs
         playerReference.GetComponent<TileMovement>().canMove = true;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
@@ -60,7 +61,8 @@ public class MatchManager : MonoBehaviour
     
     public void PlayerDeath()
     {
-        
+        ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
+        Destroy(playerReference);
     }
 
     //change this to inside the player behaviour
@@ -74,4 +76,11 @@ public class MatchManager : MonoBehaviour
             PlayerDeath();
     }
 
+    void RespawnPlayer()
+    {
+        //enable player
+        //disable input and shoot
+        //play respawn animation
+        //on end, enable input and shoot
+    }
 }

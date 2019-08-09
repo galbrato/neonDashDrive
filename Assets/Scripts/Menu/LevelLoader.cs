@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] float loadDelay = 0.5f;
-    [SerializeField] GameObject loadingScreen;
+    [SerializeField] GameObject loadingScreen = null;
 
     private void Awake()
     {
