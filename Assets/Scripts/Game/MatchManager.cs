@@ -5,6 +5,7 @@ using UnityEngine;
 public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
+    [SerializeField] EnemySpawner enemySpawner = null;
     [SerializeField] HUDManager hudManager = null;
     [SerializeField] Countdown countdown = null;
     [SerializeField] PlayerAttributes playerAttributes = null;
@@ -47,7 +48,7 @@ public class MatchManager : MonoBehaviour
     {
         countdown.OnCountdownEnd -= EndCountdown;
 
-        //start enemy spawn
+        enemySpawner.StartSpawn();
         //allow player inputs
         playerReference.GetComponent<TileMovement>().canMove = true;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
