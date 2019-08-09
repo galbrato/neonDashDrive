@@ -1,5 +1,4 @@
 ﻿public class PlayerAttributes
 {
-    public bool shield;
-
+    public bool shield = false;
 }
