@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6c6a1195b93be074a9b49ee7687bec07
+guid: fe37bf6b3ff7eab43aeae159c37ce665
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6841674672596373852
-    second: bomba_0
+      213: -8906526815840839940
+    second: bomba 5_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bomba_0
+      name: bomba 5_0
       rect:
         serializedVersion: 2
-        x: 1732
-        y: 858
-        width: 135
-        height: 131
+        x: 541
+        y: 290
+        width: 165
+        height: 165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e831a122a12e45b4ba3f0a225856fd82
-      internalID: 6841674672596373852
+      spriteID: daf4bf3106e9df143a9b62f6f29b929e
+      internalID: -8906526815840839940
       vertices: []
       indices: 
       edges: []

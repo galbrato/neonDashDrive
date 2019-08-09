@@ -49,7 +49,8 @@ public class MatchManager : MonoBehaviour
 
         //start enemy spawn
         //allow player inputs
-        //allow player shoot  
+        playerReference.GetComponent<TileMovement>().canMove = true;
+        playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
     }
     
     public void PlayerPickupLife()
