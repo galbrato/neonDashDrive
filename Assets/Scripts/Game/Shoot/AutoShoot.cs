@@ -27,16 +27,16 @@ public class AutoShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canShoot) return;
-
         currentTime -= Time.deltaTime;
 
-        if(currentTime <= 0)
+        if (!canShoot) return;
+
+        if (currentTime <= 0)
         {
             for (int i = 0; i < spawnPositions.Length; i++)
             {
                 obj = Instantiate(projectilesPrefab, transform.position + spawnPositions[i], Quaternion.identity, projectilesParent);
-                //obj.GetComponent<ProjectileBehaviour>().myShooter = gameObject;
+                obj.GetComponent<ProjectileBehaviour>().myShooter = gameObject;
             }
 
             currentTime = shootRate;

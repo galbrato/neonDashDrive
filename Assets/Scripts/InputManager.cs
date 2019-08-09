@@ -28,7 +28,6 @@ public class InputManager : MonoBehaviour {
     }
 
     static void  InitializePlayers() {
-        Debug.Log("Criando player padrão");
         Players = new List<PlayerController>();
         Players.Add(new KeyboardController());
 

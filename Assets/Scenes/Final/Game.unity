@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList:
   - {fileID: 7858090348467281743, guid: 61bcbf8254d5ba24e8bc4478197fdd0d, type: 3}
+  explosionParent: {fileID: 70326073}
 --- !u!1 &1346154957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,12 +3078,12 @@ PrefabInstance:
     - target: {fileID: 858061834283646038, guid: 539cf3916855b6242a8aea813b3395a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 858061834283646038, guid: 539cf3916855b6242a8aea813b3395a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 858061834283646038, guid: 539cf3916855b6242a8aea813b3395a0,
         type: 3}

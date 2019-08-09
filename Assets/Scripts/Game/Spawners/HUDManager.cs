@@ -11,9 +11,9 @@ public class HUDManager : MonoBehaviour
     //playersprite
     //playername
 
-    [SerializeField] GameObject[] lifeIcons;
-    [SerializeField] GameObject[] bombIcons;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] GameObject[] lifeIcons = null;
+    [SerializeField] GameObject[] bombIcons = null;
+    [SerializeField] TextMeshProUGUI scoreText = null;
 
     public void InitializeHUD()
     {

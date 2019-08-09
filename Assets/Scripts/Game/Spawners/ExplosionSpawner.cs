@@ -6,9 +6,11 @@ public class ExplosionSpawner : Spawner
 {
     public static ExplosionSpawner instance = null;
 
+    [SerializeField] Transform explosionParent = null;
+
     private void Awake()
     {
-        if(instance = null)
+        if(instance == null)
         {
             instance = this;
         }
@@ -16,5 +18,10 @@ public class ExplosionSpawner : Spawner
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SpawnPrefab(int index, Vector3 position)
+    {
+        Instantiate(prefabList[index], position, Quaternion.identity, explosionParent);
     }
 }

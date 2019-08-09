@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject enemyTimeline;
+    [SerializeField] GameObject enemyTimeline = null;
 
     public void StartSpawn()
     {

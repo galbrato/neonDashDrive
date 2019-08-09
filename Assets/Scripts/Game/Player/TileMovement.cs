@@ -10,16 +10,22 @@ public class TileMovement : MonoBehaviour{
     [SerializeField] float VerticalDuration = 1f;
     [SerializeField] float HorizontalDuration = 1f;
 
-    [SerializeField] AnimationCurve Curve;
+    [SerializeField] AnimationCurve Curve = null;
     Vector2 formerPosition;
     float CurveTime;
+
+    AutoShoot autoShoot;
 
     public bool isMoving;
     
 
     public bool canMove = false;
-    [SerializeField] bool willBuffer;
+    [SerializeField] bool willBuffer = true;
 
+    private void Awake()
+    {
+        autoShoot = GetComponent<AutoShoot>();
+    }
     // Start is called before the first frame update
     void Start(){
         formerPosition = transform.position;
@@ -31,6 +37,7 @@ public class TileMovement : MonoBehaviour{
         if (ActualTile == null) {
             ActualTile = FindObjectOfType<Tile>();
             isMoving = true;
+            autoShoot.ToggleShoot();
         }
 
         Move();
@@ -48,7 +55,9 @@ public class TileMovement : MonoBehaviour{
             transform.position = ActualTile.transform.position;
             formerPosition = transform.position;
             CurveTime = 0;
+
             isMoving = false;
+            autoShoot.ToggleShoot();
 
             if (NextTile!=null && !NextTile.isOccupied) {
                 TileSwap(NextTile);
@@ -114,5 +123,6 @@ public class TileMovement : MonoBehaviour{
         ActualTile = newTile;
         ActualTile.isOccupied = true;
         isMoving = true;
+        autoShoot.ToggleShoot();
     }
 }

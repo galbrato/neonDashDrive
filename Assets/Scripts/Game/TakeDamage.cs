@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    [SerializeField] string takeDamageTag;
+    [SerializeField] string takeDamageTag = null;
 
     public delegate void TakeDamageDelegate();
     public TakeDamageDelegate OnTakeDamage;

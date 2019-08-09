@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
-    [SerializeField] float totalDelay;
+    [SerializeField] float totalDelay = 0;
     Animator animator;
 
     public delegate void CountdownDelegate();

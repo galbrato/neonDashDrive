@@ -12,7 +12,9 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField] ProjectileType projectileType;
     Rigidbody2D rigid;
 
-    [SerializeField] Vector2 velocity;
+    [SerializeField] Vector2 velocity = new Vector2(0,0);
+
+    [HideInInspector] public GameObject myShooter = null;
 
     private void Awake()
     {
