@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//not used for now
 public class MusicTracksLookupTable : MonoBehaviour
 {
     public static MusicTracksLookupTable instance = null;
@@ -9,13 +10,13 @@ public class MusicTracksLookupTable : MonoBehaviour
     public string[] keys;
     public struct MusicTrack
     {
-        AudioClip[] values;
-        float[] loopTimes;
+        public AudioClip value;
+        public float loopTime;
     }
     public AudioClip[] values;
     public float[] loopTimes;
 
-    Dictionary<string, AudioClip> dictionary = new Dictionary<string, AudioClip>();
+    Dictionary<string, MusicTrack> dictionary = new Dictionary<string, MusicTrack>();
 
     private void Awake()
     {
@@ -33,13 +34,17 @@ public class MusicTracksLookupTable : MonoBehaviour
 
     void LoadDictionary()
     {
+        MusicTrack track = new MusicTrack();
+        
         for (int i = 0; i < keys.Length; i++)
         {
-            dictionary.Add(keys[i], values[i]);
+            track.value = values[i];
+            track.loopTime = loopTimes[i];
+            dictionary.Add(keys[i], track);
         }
     }
 
-    public AudioClip FetchAudioClip(string key)
+    public MusicTrack FetchAudioClip(string key)
     {
         return dictionary[key];
     }

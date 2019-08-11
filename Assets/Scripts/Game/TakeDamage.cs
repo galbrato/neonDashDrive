@@ -27,6 +27,7 @@ public class TakeDamage : MonoBehaviour
     {
         if (collision.CompareTag(takeDamageTag))
         {
+
             OnHit();
         }
     }

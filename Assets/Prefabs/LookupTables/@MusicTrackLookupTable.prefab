@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba70ee72a33a3a4dad76a5fba57469a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keys: []
-  values: []
+  keys:
+  - Game
+  - Menu
+  values:
+  - {fileID: 8300000, guid: 22950b6ffed037242813cd0e20b24664, type: 3}
+  - {fileID: 8300000, guid: 4ba8000ceb8f9044f9fe9f848c2d410d, type: 3}
+  loopTimes:
+  - 236.826
+  - 358.06

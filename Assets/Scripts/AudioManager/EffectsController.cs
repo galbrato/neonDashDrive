@@ -39,7 +39,6 @@ public class EffectsController : MonoBehaviour
             Source = obj.GetComponent<AudioSource>();
 
             DontDestroyOnLoad(obj);
-
         }
 
         if (PlayerPrefs.GetInt(PrefsString, 0) == 1)

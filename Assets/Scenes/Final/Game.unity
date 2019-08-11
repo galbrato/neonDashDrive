@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 244973367}
   - component: {fileID: 244973366}
   m_Layer: 5
-  m_Name: MuteEffectsToggle
+  m_Name: MuteEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,8 +717,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7281607729586367922, guid: 70aa1e065f38ef54dbb060a8938d0b09,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1571,7 +1572,7 @@ GameObject:
   - component: {fileID: 573426770}
   - component: {fileID: 573426769}
   m_Layer: 5
-  m_Name: MuteMusicToggle
+  m_Name: MuteMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1666,8 +1667,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 7281607729586367922, guid: 70aa1e065f38ef54dbb060a8938d0b09,
-    type: 3}
+  m_Sprite: {fileID: -8785344744026675, guid: 27573383bf749b34897be3a9a56f4498, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2324,7 +2324,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043770293
 MonoBehaviour:
@@ -2346,7 +2346,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4983010626325442085, guid: cb767c9e9eb07bf4c8e21052967fed38,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2591,7 +2592,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 134217727
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3467,7 +3468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1656654064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4424,7 +4425,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 4983010626325442085, guid: cb767c9e9eb07bf4c8e21052967fed38,
+  m_Sprite: {fileID: -3622885995624915609, guid: bc2b06a704347674989038b38e475876,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5151,6 +5152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadDelay: 0.5
   loadingScreen: {fileID: 2088205036}
+  menuClip: {fileID: 0}
+  menuClipLoop: 0
+  gameClip: {fileID: 0}
+  gameClipLoop: 0
 --- !u!1001 &7390641046773085487
 PrefabInstance:
   m_ObjectHideFlags: 0
