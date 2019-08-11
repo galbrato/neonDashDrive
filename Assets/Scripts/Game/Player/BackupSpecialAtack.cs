@@ -64,6 +64,7 @@ public class BackupSpecialAtack : SpecialAtack {
             if (TimeCounter >= ActivationTime) {
                 //Debug.Log("DROP IT");
                 SpecialAtackAnimator.SetTrigger("Start");
+                AnnouncementManager.AnnouncementTheSpecial();
                 Time.timeScale = 1;
                 TimeCounter = 0;
                 isAtacking = true;
