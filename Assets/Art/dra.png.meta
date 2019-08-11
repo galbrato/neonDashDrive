@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6931e4f32f24f94b9047db7706ecc67
+guid: b0c50df883f765a43b88a8ad9321297c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1612017872671326014
-    second: barra azul_0
+      213: 5107487064508814660
+    second: dra_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barra azul_0
+      name: dra_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 154
         y: 0
-        width: 513
-        height: 518
+        width: 470
+        height: 768
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6f52dce40e10974f9a5e6b8e27a4443
-      internalID: -1612017872671326014
+      spriteID: 34260e0f4c22c514dbfec9a72791e196
+      internalID: 5107487064508814660
       vertices: []
       indices: 
       edges: []

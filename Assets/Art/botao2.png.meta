@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6931e4f32f24f94b9047db7706ecc67
+guid: f9809f80b73c14e46a2a8763e18192ec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1612017872671326014
-    second: barra azul_0
+      213: -7244494741505744173
+    second: botao2_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barra azul_0
+      name: botao2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 513
-        height: 518
+        x: 745
+        y: 1055
+        width: 167
+        height: 390
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6f52dce40e10974f9a5e6b8e27a4443
-      internalID: -1612017872671326014
+      spriteID: fbf52ed87a257d44b9332c471bf1aabf
+      internalID: -7244494741505744173
       vertices: []
       indices: 
       edges: []
