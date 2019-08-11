@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour{
     TileMovement Movement;
-
+    SpecialAtack specialAtack;
+     
     private void Awake() {
         Movement = GetComponent<TileMovement>();
+        specialAtack = GetComponent<SpecialAtack>();
     }
 
     // Start is called before the first frame update
@@ -24,6 +26,10 @@ public class PlayerBehaviour : MonoBehaviour{
 
         for (int i = 0; i < Input.touchCount; i++) {
             //Debug.Log("touch(" + i+ ") " + Input.GetTouch(i).fingerId);
+        }
+
+        if (Input.GetKey(KeyCode.Space)) {
+            specialAtack.StartAtack();
         }
     }
 
