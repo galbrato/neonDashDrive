@@ -2459,6 +2459,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 1014919617}
   hudManager: {fileID: 531395715}
   countdown: {fileID: 1468782004}
+  screenShake: {fileID: 2092061523}
 --- !u!1 &1189580120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4977,6 +4978,7 @@ GameObject:
   - component: {fileID: 2092061520}
   - component: {fileID: 2092061519}
   - component: {fileID: 2092061522}
+  - component: {fileID: 2092061523}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5002,7 +5004,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.08235294, g: 0.011764707, b: 0.16470589, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5109,6 +5111,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &2092061523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092061518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03be1e398e83cdd48a1def45f7704dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 362124975}
+  shakeAmount: 0.1
+  decreaseFactor: 1
 --- !u!1 &2105313267
 GameObject:
   m_ObjectHideFlags: 0
