@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 209283713502696937}
   - component: {fileID: 4615428126235882680}
   - component: {fileID: 6974041655596282114}
-  - component: {fileID: 1636217298178843750}
   - component: {fileID: 9211746370657092014}
+  - component: {fileID: 1826341935419500444}
   m_Layer: 0
   m_Name: GangBro (3)
   m_TagString: Obstacle
@@ -131,19 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.7}
   m_EdgeRadius: 0
---- !u!114 &1636217298178843750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586889255312516188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04c6c46552b35640b1e0a6c58a1f8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TagToDestroy: EnemyProjectile
 --- !u!50 &9211746370657092014
 Rigidbody2D:
   serializedVersion: 4
@@ -165,6 +152,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1826341935419500444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586889255312516188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: EnemyProjectile
 --- !u!1 &2165438861000411816
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7620353241818377660}
   m_Layer: 0
   m_Name: Gang
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,8 +231,8 @@ GameObject:
   - component: {fileID: 464200427244929119}
   - component: {fileID: 3073493831811092555}
   - component: {fileID: 3410614813556362135}
-  - component: {fileID: 7505116142849778088}
   - component: {fileID: 6402892742119340621}
+  - component: {fileID: 6458323068085386568}
   m_Layer: 0
   m_Name: GangBro (6)
   m_TagString: Obstacle
@@ -350,19 +350,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.7}
   m_EdgeRadius: 0
---- !u!114 &7505116142849778088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372153588742206095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04c6c46552b35640b1e0a6c58a1f8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TagToDestroy: EnemyProjectile
 --- !u!50 &6402892742119340621
 Rigidbody2D:
   serializedVersion: 4
@@ -384,6 +371,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6458323068085386568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372153588742206095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: EnemyProjectile
 --- !u!1 &2910451360813374231
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +395,8 @@ GameObject:
   - component: {fileID: 5119509782255475477}
   - component: {fileID: 4869902842067630163}
   - component: {fileID: 7352420349472904637}
-  - component: {fileID: 155427960127167164}
   - component: {fileID: 3488064506038718528}
+  - component: {fileID: 932765099646541952}
   m_Layer: 0
   m_Name: GangBro
   m_TagString: Obstacle
@@ -494,19 +494,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.7}
   m_EdgeRadius: 0
---- !u!114 &155427960127167164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2910451360813374231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04c6c46552b35640b1e0a6c58a1f8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TagToDestroy: EnemyProjectile
 --- !u!50 &3488064506038718528
 Rigidbody2D:
   serializedVersion: 4
@@ -528,6 +515,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &932765099646541952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910451360813374231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: EnemyProjectile
 --- !u!1 &6408887650853585921
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +539,9 @@ GameObject:
   - component: {fileID: 5969780153755891796}
   - component: {fileID: 8389790905098313952}
   - component: {fileID: 1956253282596508566}
+  - component: {fileID: 1259093015886870643}
+  - component: {fileID: 6222051290426267262}
+  - component: {fileID: 554158666423610355}
   m_Layer: 0
   m_Name: GangBro (7)
   m_TagString: Obstacle
@@ -630,6 +633,66 @@ MonoBehaviour:
   projectilesPrefab: {fileID: 7919932114093990307, guid: e2dc1d52bed5b9748b87fb5453c4b001,
     type: 3}
   canShoot: 0
+--- !u!61 &1259093015886870643
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408887650853585921}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.14, y: 1.7}
+    newSize: {x: 1.14, y: 1.7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.14, y: 1.7}
+  m_EdgeRadius: 0
+--- !u!50 &6222051290426267262
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408887650853585921}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &554158666423610355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408887650853585921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: EnemyProjectile
 --- !u!1 &7538505589449833829
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +713,7 @@ GameObject:
   - component: {fileID: 170864203501364721}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -852,7 +915,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.14, y: 1.7}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!50 &2988963236287070944
 Rigidbody2D:

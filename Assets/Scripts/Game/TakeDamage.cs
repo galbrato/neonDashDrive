@@ -9,15 +9,6 @@ public class TakeDamage : MonoBehaviour
     public delegate void TakeDamageDelegate();
     public TakeDamageDelegate OnTakeDamage;
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnHit();
-        }
-    }
-
     public void OnHit()
     {
         OnTakeDamage?.Invoke();
@@ -27,7 +18,8 @@ public class TakeDamage : MonoBehaviour
     {
         if (collision.CompareTag(takeDamageTag))
         {
-
+            Destroy(collision.gameObject);
+            //print(name);
             OnHit();
         }
     }

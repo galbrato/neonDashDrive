@@ -22,14 +22,14 @@ public class BackupSpecialAtack : SpecialAtack {
     // Update is called once per frame
     void Update() {
         if (isAtacking) {
-            Debug.Log("PEW PEW PEW");
+            //Debug.Log("PEW PEW PEW");
             TimeCounter += Time.deltaTime;
             if (TimeCounter >= Duration) {
                 EndAtack();
             }
         } else {
             if (!isPressing && TimeCounter > 0) {
-                Debug.Log("I... faio");
+                //Debug.Log("I... faio");
                 Time.timeScale = 1;
                 TimeCounter = 0;
             } else {
@@ -46,7 +46,7 @@ public class BackupSpecialAtack : SpecialAtack {
 
     public override void EndAtack() {
         isAtacking = false;
-        Debug.Log("Cabooooooooooooooo");
+        //Debug.Log("Cabooooooooooooooo");
         SpecialAtackAnimator.SetTrigger("Stop");
     }
 
@@ -60,9 +60,9 @@ public class BackupSpecialAtack : SpecialAtack {
             //Time.timeScale = 0.2f + (1 - (TimeCounter / ActivationTime)) * 0.8f;
             Time.timeScale = Mathf.Lerp(1f, 0.2f, Mathf.Clamp(TimeCounter / ActivationTime,0f,1f));
             TimeCounter += Time.deltaTime;
-            Debug.Log("CARREGANDO");
+            //Debug.Log("CARREGANDO");
             if (TimeCounter >= ActivationTime) {
-                Debug.Log("DROP IT");
+                //Debug.Log("DROP IT");
                 SpecialAtackAnimator.SetTrigger("Start");
                 Time.timeScale = 1;
                 TimeCounter = 0;
