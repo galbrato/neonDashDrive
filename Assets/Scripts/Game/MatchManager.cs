@@ -16,6 +16,9 @@ public class MatchManager : MonoBehaviour
     bool shield = false; //temp
     int shotLevel = 1; //temp
 
+    [Space(20)]
+    [SerializeField] ScreenShake screenShake;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +72,11 @@ public class MatchManager : MonoBehaviour
     public void PlayerDeath()
     {
         ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
+
+        screenShake.Shake(0.5f);
+#if UNITY_ANDROID
+        Handheld.Vibrate();
+#endif
         Destroy(playerReference);
     }
 
