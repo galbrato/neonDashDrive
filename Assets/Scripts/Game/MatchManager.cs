@@ -5,12 +5,16 @@ using UnityEngine;
 public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
+
     [SerializeField] EnemySpawner enemySpawner = null;
     [SerializeField] HUDManager hudManager = null;
     [SerializeField] Countdown countdown = null;
-    [SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
+    //[SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
 
     GameObject playerReference;
+
+    bool shield = false; //temp
+    int shotLevel = 1; //temp
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +23,12 @@ public class MatchManager : MonoBehaviour
         int index = 0; //temp
 
         playerReference = playerSpawner.SpawnPlayer(index);
+
+        PlayerPowerupPickup powerupScript = playerReference.GetComponent<PlayerPowerupPickup>();
+        powerupScript.OnShotPickup += IncrementShotLevel;
+        powerupScript.OnShieldPickup += AddShield;
+        powerupScript.OnBombPickup += AddBomb;
+        powerupScript.OnLifePickup += AddLife;
 
         hudManager.InitializeHUD();
 
@@ -53,11 +63,8 @@ public class MatchManager : MonoBehaviour
         playerReference.GetComponent<TileMovement>().canMove = true;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
     }
-    
-    public void PlayerPickupLife()
-    {
 
-    }
+    //player methods
     
     public void PlayerDeath()
     {
@@ -68,9 +75,11 @@ public class MatchManager : MonoBehaviour
     //change this to inside the player behaviour
     public void PlayerTakeDamage()
     {
-        if (playerAttributes.shield)
+        //if (playerAttributes.shield)
+        if (shield)
         {
-            //lose shield
+            shield = false;
+            //disable shield
         }
         else
             PlayerDeath();
@@ -82,5 +91,32 @@ public class MatchManager : MonoBehaviour
         //disable input and shoot
         //play respawn animation
         //on end, enable input and shoot
+    }
+
+    public void IncrementShotLevel()
+    {
+        hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetShot"));
+        if(shotLevel < 5) shotLevel++;
+        //change shot
+    }
+
+    public void AddShield()
+    {
+        hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetShield"));
+        //playerAttributes.shield = true;
+        shield = true;
+        //enable shield
+    }
+
+    public void AddBomb()
+    {
+        hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetBomb"));
+        hudManager.UpdateBombs(1);
+    }
+
+    public void AddLife()
+    {
+        hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetLife"));
+        hudManager.UpdateLives(1);
     }
 }

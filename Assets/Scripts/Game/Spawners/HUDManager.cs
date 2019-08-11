@@ -79,7 +79,7 @@ public class HUDManager : MonoBehaviour
         UpdateBombsHUD();
     }
 
-    public void UpdateText(int change)
+    public void UpdateScore(int change)
     {
         points += change;
 
