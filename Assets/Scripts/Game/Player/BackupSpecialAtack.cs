@@ -9,11 +9,14 @@ public class BackupSpecialAtack : SpecialAtack {
 
     bool isAtacking = false;
     bool isPressing = false;
+
+    [SerializeField]Animator SpecialAtackAnimator;
     // Start is called before the first frame update
     void Start() {
         TimeCounter = 0;
         bool isAtacking = false;
         bool isPressing = false;
+
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class BackupSpecialAtack : SpecialAtack {
             Debug.Log("PEW PEW PEW");
             TimeCounter += Time.deltaTime;
             if (TimeCounter >= Duration) {
-                isAtacking = false;
+                EndAtack();
             }
         } else {
             if (!isPressing && TimeCounter > 0) {
@@ -43,6 +46,8 @@ public class BackupSpecialAtack : SpecialAtack {
 
     public override void EndAtack() {
         isAtacking = false;
+        Debug.Log("Cabooooooooooooooo");
+        SpecialAtackAnimator.SetTrigger("Stop");
     }
 
     public override bool IsAtacking() {
@@ -52,11 +57,13 @@ public class BackupSpecialAtack : SpecialAtack {
     public override void StartAtack() {
         if (!isAtacking) {
             isPressing = true;
-            Time.timeScale = 0.2f;
+            //Time.timeScale = 0.2f + (1 - (TimeCounter / ActivationTime)) * 0.8f;
+            Time.timeScale = Mathf.Lerp(1f, 0.2f, Mathf.Clamp(TimeCounter / ActivationTime,0f,1f));
             TimeCounter += Time.deltaTime;
             Debug.Log("CARREGANDO");
             if (TimeCounter >= ActivationTime) {
                 Debug.Log("DROP IT");
+                SpecialAtackAnimator.SetTrigger("Start");
                 Time.timeScale = 1;
                 TimeCounter = 0;
                 isAtacking = true;

@@ -35,7 +35,8 @@ public class TileMovement : MonoBehaviour{
     void Update()
     {
         if (ActualTile == null) {
-            ActualTile = FindObjectOfType<Tile>();
+            Tile[] tiles = FindObjectsOfType<Tile>();
+            ActualTile = tiles[Mathf.FloorToInt(tiles.Length / 2)];
             isMoving = true;
             autoShoot.ToggleShoot();
         }

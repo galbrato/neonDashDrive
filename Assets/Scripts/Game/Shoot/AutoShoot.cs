@@ -21,7 +21,7 @@ public class AutoShoot : MonoBehaviour
     {
         projectilesParent = GameObject.Find("_Projectiles").transform;
 
-        currentTime = shootRate;
+        currentTime = 1/shootRate;
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class AutoShoot : MonoBehaviour
                 obj.GetComponent<ProjectileBehaviour>().myShooter = gameObject;
             }
 
-            currentTime = shootRate;
+            currentTime = 1/shootRate;
         }
     }
 
