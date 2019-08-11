@@ -5,7 +5,7 @@ using UnityEngine;
 public class AutoShoot : MonoBehaviour
 {
     [SerializeField] float shootRate = 0;
-    [SerializeField] float shootMultiplier = 0;
+    [SerializeField] float shootMultiplier = 1;
 
     [SerializeField] Vector3[] spawnPositions = null;
 
@@ -21,7 +21,7 @@ public class AutoShoot : MonoBehaviour
     {
         projectilesParent = GameObject.Find("_Projectiles").transform;
 
-        currentTime = shootRate;
+        currentTime = shootRate*shootMultiplier;
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class AutoShoot : MonoBehaviour
                 obj.GetComponent<ProjectileBehaviour>().myShooter = gameObject;
             }
 
-            currentTime = shootRate;
+            currentTime = shootRate*shootMultiplier;
         }
     }
 

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootRate: 1
-  shootMultiplier: 0
+  shootMultiplier: 1
   spawnPositions:
   - {x: 0, y: -0.38, z: 0}
   projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
