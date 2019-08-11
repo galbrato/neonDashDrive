@@ -10,16 +10,22 @@ public class TileMovement : MonoBehaviour{
     [SerializeField] float VerticalDuration = 1f;
     [SerializeField] float HorizontalDuration = 1f;
 
-    [SerializeField] AnimationCurve Curve;
+    [SerializeField] AnimationCurve Curve = null;
     Vector2 formerPosition;
     float CurveTime;
+
+    AutoShoot autoShoot;
 
     public bool isMoving;
     
 
     public bool canMove = false;
-    [SerializeField] bool WillBuffer;
+    [SerializeField] bool willBuffer = true;
 
+    private void Awake()
+    {
+        autoShoot = GetComponent<AutoShoot>();
+    }
     // Start is called before the first frame update
     void Start(){
         formerPosition = transform.position;
@@ -31,6 +37,7 @@ public class TileMovement : MonoBehaviour{
         if (ActualTile == null) {
             ActualTile = FindObjectOfType<Tile>();
             isMoving = true;
+            autoShoot.ToggleShoot();
         }
 
         Move();
@@ -48,7 +55,9 @@ public class TileMovement : MonoBehaviour{
             transform.position = ActualTile.transform.position;
             formerPosition = transform.position;
             CurveTime = 0;
+
             isMoving = false;
+            autoShoot.ToggleShoot();
 
             if (NextTile!=null && !NextTile.isOccupied) {
                 TileSwap(NextTile);
@@ -71,7 +80,7 @@ public class TileMovement : MonoBehaviour{
     public void MoveUp() {
         if (ActualTile.upTile != null && canMove) {
             if (isMoving) {
-                if(WillBuffer)NextTile = ActualTile.upTile;
+                if(willBuffer)NextTile = ActualTile.upTile;
             } else if (!ActualTile.upTile.isOccupied) {
                 TileSwap(ActualTile.upTile);
             }
@@ -81,7 +90,7 @@ public class TileMovement : MonoBehaviour{
     public void MoveDown() {
         if (ActualTile.downTile != null && canMove) {
             if (isMoving) {
-                if (WillBuffer) NextTile = ActualTile.downTile;
+                if (willBuffer) NextTile = ActualTile.downTile;
             } else if (!ActualTile.downTile.isOccupied) {
                 TileSwap(ActualTile.downTile);
             }
@@ -91,7 +100,7 @@ public class TileMovement : MonoBehaviour{
     public void MoveRight() {
         if (ActualTile.rightTile != null && canMove) {
             if (isMoving) {
-                if (WillBuffer) NextTile = ActualTile.rightTile;
+                if (willBuffer) NextTile = ActualTile.rightTile;
             } else if (!ActualTile.rightTile.isOccupied) {
                 TileSwap(ActualTile.rightTile);
             }
@@ -101,7 +110,7 @@ public class TileMovement : MonoBehaviour{
     public void MoveLeft() {
         if (ActualTile.leftTile != null && canMove) {
             if (isMoving) {
-                if (WillBuffer) NextTile = ActualTile.leftTile;
+                if (willBuffer) NextTile = ActualTile.leftTile;
             } else if (!ActualTile.leftTile.isOccupied) {
                 TileSwap(ActualTile.leftTile);
             }
@@ -114,5 +123,6 @@ public class TileMovement : MonoBehaviour{
         ActualTile = newTile;
         ActualTile.isOccupied = true;
         isMoving = true;
+        autoShoot.ToggleShoot();
     }
 }
