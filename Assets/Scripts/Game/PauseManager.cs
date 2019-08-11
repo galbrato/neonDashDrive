@@ -14,11 +14,11 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = isPaused ? 0 : 1;
         if (isPaused)
         {
-            pauseAnimator.SetTrigger("PauseOn");
+            pauseAnimator.SetTrigger("OpenPause");
         }
         else
         {
-            pauseAnimator.SetTrigger("PauseOff");
+            pauseAnimator.SetTrigger("ClosePause");
         }
     }
 }
