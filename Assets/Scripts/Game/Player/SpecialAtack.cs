@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpacialAtack : MonoBehaviour {
-    abstract public bool StartAtack();
+public abstract class SpecialAtack : MonoBehaviour {
+    abstract public void StartAtack();
 
     abstract public bool CanAtack();
 
     abstract public bool IsAtacking();
 
-    abstract public bool EndAtack();
+    abstract public void EndAtack();
 }

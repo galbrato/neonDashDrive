@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BackupSpecialAtack : SpecialAtack {
+    [SerializeField] float Duration = 2f;
+    [SerializeField] float ActivationTime = 0.5f;
+    float TimeCounter = 0;
+
+    bool isAtacking = false;
+    bool isPressing = false;
+    // Start is called before the first frame update
+    void Start() {
+        TimeCounter = 0;
+        bool isAtacking = false;
+        bool isPressing = false;
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (isAtacking) {
+            Debug.Log("PEW PEW PEW");
+            TimeCounter += Time.deltaTime;
+            if (TimeCounter >= Duration) {
+                isAtacking = false;
+            }
+        } else {
+            if (!isPressing && TimeCounter > 0) {
+                Debug.Log("I... faio");
+                Time.timeScale = 1;
+                TimeCounter = 0;
+            } else {
+                isPressing = false;
+            }
+        }
+        
+    }
+
+
+    public override bool CanAtack() {
+        throw new System.NotImplementedException();
+    }
+
+    public override void EndAtack() {
+        isAtacking = false;
+    }
+
+    public override bool IsAtacking() {
+        return isAtacking;
+    }
+
+    public override void StartAtack() {
+        if (!isAtacking) {
+            isPressing = true;
+            Time.timeScale = 0.2f;
+            TimeCounter += Time.deltaTime;
+            Debug.Log("CARREGANDO");
+            if (TimeCounter >= ActivationTime) {
+                Debug.Log("DROP IT");
+                Time.timeScale = 1;
+                TimeCounter = 0;
+                isAtacking = true;
+            }
+        }
+    }
+}
