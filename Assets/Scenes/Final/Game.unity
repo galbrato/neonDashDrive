@@ -1546,6 +1546,8 @@ MonoBehaviour:
   playerPrefab:
   - {fileID: 7538505589449833829, guid: b1b205aa82d98224eb8b1c314658c14e, type: 3}
   spawnPosition: {x: 0, y: 0, z: 0}
+  tilesGrid: {fileID: 1229218301}
+  spawnTileIndex: 7
   spawnParent: {fileID: 1511018852}
 --- !u!1 &567271075 stripped
 GameObject:
