@@ -71,13 +71,22 @@ public class MatchManager : MonoBehaviour
     
     public void PlayerDeath()
     {
+
         ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
 
         screenShake.Shake(0.5f);
 #if UNITY_ANDROID
         Handheld.Vibrate();
 #endif
-        Destroy(playerReference);
+
+        playerReference.SetActive(false);
+        StartCoroutine(DeathDelay());
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerSpawner.RespawnPlayer(playerReference);
     }
 
     //change this to inside the player behaviour
@@ -90,15 +99,9 @@ public class MatchManager : MonoBehaviour
             //disable shield
         }
         else
+        {
             PlayerDeath();
-    }
-
-    void RespawnPlayer()
-    {
-        //enable player
-        //disable input and shoot
-        //play respawn animation
-        //on end, enable input and shoot
+        }
     }
 
     public void IncrementShotLevel()

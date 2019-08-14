@@ -54,6 +54,13 @@ public class AutoShoot : MonoBehaviour
         velocities = newFormation.velocities;
     }*/
 
+    public void SetParameters(float rate, float mult, bool _canShoot)
+    {
+        shootRate = rate;
+        shootMultiplier = mult;
+        canShoot = _canShoot;
+    }
+
 
     private void OnDrawGizmosSelected()
     {

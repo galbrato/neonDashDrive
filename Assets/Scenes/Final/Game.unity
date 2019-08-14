@@ -1545,10 +1545,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab:
   - {fileID: 7538505589449833829, guid: b1b205aa82d98224eb8b1c314658c14e, type: 3}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0.5, y: -0.75, z: 0.5}
   tilesGrid: {fileID: 1229218301}
   spawnTileIndex: 7
   spawnParent: {fileID: 1511018852}
+  shootRate: 3
+  shootMultiplier: 1
+  canShoot: 0
 --- !u!1 &567271075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8421464051117577169, guid: 26ceb4284b1da284996d30b15f7e2865,
