@@ -53,7 +53,6 @@ public class ScreenShake : MonoBehaviour
         canvas.renderMode = RenderMode.WorldSpace;
         while (shakeDuration > 0)
         {
-            print(camTransform.localPosition);
             camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 
             shakeDuration -= Time.deltaTime * decreaseFactor;

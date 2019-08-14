@@ -1551,7 +1551,6 @@ MonoBehaviour:
   spawnParent: {fileID: 1511018852}
   shootRate: 3
   shootMultiplier: 1
-  canShoot: 0
 --- !u!1 &567271075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8421464051117577169, guid: 26ceb4284b1da284996d30b15f7e2865,
@@ -2465,6 +2464,8 @@ MonoBehaviour:
   hudManager: {fileID: 531395715}
   countdown: {fileID: 1468782004}
   screenShake: {fileID: 2092061523}
+  respawnDelay: 0.5
+  lifeCount: 3
 --- !u!1 &1189580120
 GameObject:
   m_ObjectHideFlags: 0

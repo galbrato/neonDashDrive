@@ -14,7 +14,6 @@ public class PlayerSpawner : MonoBehaviour
     [Header("1. AutoShoot")]
     public float shootRate = 3;
     public float shootMultiplier = 1;
-    public bool canShoot = false;
 
     //[Header("2.")]
 
@@ -23,7 +22,7 @@ public class PlayerSpawner : MonoBehaviour
         GameObject obj = Instantiate(playerPrefab[index], spawnPosition, Quaternion.identity, spawnParent);
         obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
-        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, canShoot);
+        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, false);
         return obj;
     }
 
@@ -32,7 +31,9 @@ public class PlayerSpawner : MonoBehaviour
         obj.transform.position = spawnPosition;
         obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
-        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, canShoot);
+        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, true);
         obj.SetActive(true);
+
+        //play spawn animation then set canShoot to true
     }
 }

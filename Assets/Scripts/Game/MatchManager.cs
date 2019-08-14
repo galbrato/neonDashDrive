@@ -18,6 +18,8 @@ public class MatchManager : MonoBehaviour
 
     [Space(20)]
     [SerializeField] ScreenShake screenShake;
+    [SerializeField] float respawnDelay;
+    [SerializeField] int lifeCount = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -71,21 +73,32 @@ public class MatchManager : MonoBehaviour
     
     public void PlayerDeath()
     {
+        playerReference.GetComponent<TileMovement>().ActualTile.isOccupied = false;
+        playerReference.SetActive(false);
 
         ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
+
+        lifeCount--;
+        hudManager.UpdateLives(-1);
 
         screenShake.Shake(0.5f);
 #if UNITY_ANDROID
         Handheld.Vibrate();
 #endif
 
-        playerReference.SetActive(false);
-        StartCoroutine(DeathDelay());
+        if (lifeCount > 0)
+        {
+            StartCoroutine(DeathDelay());
+        }
+        else
+        {
+            //gameover
+        }
     }
 
     IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(respawnDelay);
         playerSpawner.RespawnPlayer(playerReference);
     }
 
