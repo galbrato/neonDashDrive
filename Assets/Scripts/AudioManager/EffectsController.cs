@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,9 @@ public class EffectsController : MonoBehaviour
 
     private static string PrefsString = "MuteEffects";
 
+    //temp
+    bool CallOnNextTick = false;
+
     void Awake()
     {
         Clips = new Dictionary<string, AudioClip>();
@@ -45,12 +49,28 @@ public class EffectsController : MonoBehaviour
         {
             Source.mute = true;
         }
+
+        SFXMuteToggle = GameObject.Find("MuteEffects")?.GetComponent<Toggle>();
+        SFXMuteToggle.isOn = Source.mute;
     }
 
     void AddListenerToMuteButton(Scene scene, LoadSceneMode mode)
     {
         SFXMuteToggle = GameObject.Find("MuteEffects")?.GetComponent<Toggle>();
+        //SFXMuteToggle.isOn = Source.mute;
+        CallOnNextTick = true;
+
         SFXMuteToggle?.onValueChanged.AddListener((bool mute) => ToggleMuteSFX(mute));
+    }
+
+    void Update()
+    {
+        if (!CallOnNextTick) return;
+        else
+        {
+            SFXMuteToggle.isOn = Source.mute;
+            CallOnNextTick = false;
+        }
     }
 
     void FillClips()
