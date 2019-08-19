@@ -26,6 +26,7 @@ public class LevelLoader : MonoBehaviour
     private void Start()
     {
         musicController = AudioManager.instance?.GetComponent<MusicController>();
+        Time.timeScale = 1;
     }
 
     public void LoadScene(string sceneName) {
@@ -50,7 +51,8 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator WaitForLoad(string sceneName)
     {
-        yield return new WaitForSeconds(loadDelay);
+        yield return new WaitForSecondsRealtime(loadDelay);
+
         SceneManager.LoadScene(sceneName);
     }
 }

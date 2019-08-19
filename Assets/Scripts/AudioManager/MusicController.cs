@@ -29,6 +29,9 @@ public class MusicController : MonoBehaviour
 
     private static string PrefsString = "MuteMusic";
 
+    //temp
+    bool CallOnNextTick = false;
+
     void Awake()
     {
         SceneManager.sceneLoaded += AddListenerToMuteButton;
@@ -66,7 +69,19 @@ public class MusicController : MonoBehaviour
     {
         MusicMuteToggle = GameObject.Find("MuteMusic")?.GetComponent<Toggle>();
         //MusicMuteToggle.isOn = Source1.mute;
+        CallOnNextTick = true;
+
         MusicMuteToggle?.onValueChanged.AddListener((bool mute) => ToggleMuteMusic(mute));
+    }
+
+    void Update()
+    {
+        if (!CallOnNextTick) return;
+        else
+        {
+            MusicMuteToggle.isOn = Source1.mute;
+            CallOnNextTick = false;
+        }
     }
 
     public void ChangeTrackInstantly(AudioClip newTrack, float loopTime)

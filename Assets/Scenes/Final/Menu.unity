@@ -878,7 +878,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5b7c4c0e481cb424b8117323663859ed, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -4041,8 +4041,8 @@ MonoBehaviour:
     type: 3}
   InitialMusicTrack: {fileID: 8300000, guid: 4ba8000ceb8f9044f9fe9f848c2d410d, type: 3}
   LoopDuration: 358.06
-  FadeDuration: 2
-  BlendDuration: 2
+  FadeDuration: 1
+  BlendDuration: 1
 --- !u!114 &1634078178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,6 +4834,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '@LevelLoader'
       objectReference: {fileID: 0}
+    - target: {fileID: 139229719712808285, guid: fc2a309252ae6164e8ca984fadcc15ed,
+        type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 355827655}
     - target: {fileID: 139229719712808284, guid: fc2a309252ae6164e8ca984fadcc15ed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4889,10 +4894,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 139229719712808285, guid: fc2a309252ae6164e8ca984fadcc15ed,
-        type: 3}
-      propertyPath: loadingScreen
-      value: 
-      objectReference: {fileID: 355827655}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2a309252ae6164e8ca984fadcc15ed, type: 3}
