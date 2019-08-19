@@ -35,6 +35,9 @@ public class MatchManager : MonoBehaviour
         powerupScript.OnBombPickup += AddBomb;
         powerupScript.OnLifePickup += AddLife;
 
+        SpecialAtack specialScript = playerReference.GetComponent<SpecialAtack>();
+        specialScript.OnSpecialUse += UseBomb;
+
         hudManager.InitializeHUD();
 
         //delegate subscriptions
@@ -136,6 +139,13 @@ public class MatchManager : MonoBehaviour
     {
         hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetBomb"));
         hudManager.UpdateBombs(1);
+    }
+
+    public void UseBomb()
+    {
+        print("use bomb");
+        //hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("UseBomb"));
+        hudManager.UpdateBombs(-1);
     }
 
     public void AddLife()

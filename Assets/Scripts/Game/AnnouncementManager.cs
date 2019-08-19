@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AnnouncementManager : MonoBehaviour
 {
+    public static AnnouncementManager instance = null;
+    static Animator anim;
 
-    public static AnnouncementManager instance = null; 
     void Awake() {
         if (instance == null)
             instance = this;
@@ -14,19 +15,6 @@ public class AnnouncementManager : MonoBehaviour
             Destroy(gameObject);
 
         anim = GetComponent<Animator>();
-    }
-
-    static Animator anim;
-    
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public static void AnnouncementTheSpecial() {

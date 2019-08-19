@@ -72,9 +72,9 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateBombs(int change)
     {
-        lifeCount += change;
-        if (lifeCount > 3) lifeCount = 3;
-        else if (lifeCount < 0) lifeCount = 0;
+        bombCount += change;
+        if (bombCount > 3) lifeCount = 3;
+        else if (bombCount < 0) bombCount = 0;
 
         UpdateBombsHUD();
     }

@@ -63,6 +63,10 @@ public class BackupSpecialAtack : SpecialAtack {
             //Debug.Log("CARREGANDO");
             if (TimeCounter >= ActivationTime) {
                 //Debug.Log("DROP IT");
+
+                //temp
+                OnSpecialUse?.Invoke();
+                //temp
                 SpecialAtackAnimator.SetTrigger("Start");
                 AnnouncementManager.AnnouncementTheSpecial();
                 Time.timeScale = 1;

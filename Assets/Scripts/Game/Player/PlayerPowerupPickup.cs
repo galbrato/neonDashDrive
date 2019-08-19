@@ -12,7 +12,6 @@ public class PlayerPowerupPickup : MonoBehaviour
 
     public void IncrementShotLevel()
     {
-        
         OnShotPickup?.Invoke();
     }
 
