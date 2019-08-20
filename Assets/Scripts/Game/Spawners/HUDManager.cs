@@ -12,7 +12,7 @@ public class HUDManager : MonoBehaviour
     //playername
 
     [SerializeField] GameObject[] lifeIcons = null;
-    [SerializeField] GameObject[] bombIcons = null;
+    [SerializeField] TextMeshProUGUI bombText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
 
     public void InitializeHUD()
@@ -41,18 +41,11 @@ public class HUDManager : MonoBehaviour
 
     }
 
-    void UpdateBombsHUD()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (bombCount - 1 == i)
-            {
-                bombIcons[i].SetActive(true);
-            }
-            else
-            {
-                bombIcons[i].SetActive(false);
-            }
+    void UpdateBombsHUD(){
+        if (bombText != null) {
+            bombText.text = "X " + bombCount;
+        } else {
+            Debug.LogError("No HUDManager ta faltando o texto do que aparece as bombas");
         }
     }
 

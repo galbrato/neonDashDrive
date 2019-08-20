@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour{
@@ -17,6 +18,21 @@ public class PlayerBehaviour : MonoBehaviour{
         if (Input.touchSupported) {
             Debug.Log("Touch funfa");
             InputManager.MakeTouchPlayer(0);
+        } else {
+            Debug.Log("Touch não funfa");
+        }
+
+        GameObject g = GameObject.Find("SpecialAtackButton");
+
+        if (g != null) {
+            Button button = GetComponent<Button>();
+            if (button != null) {
+                button.onClick.AddListener(() => specialAtack.StartAtack());
+            } else {
+                Debug.LogError("SpecialAtackButton não tem component de botão");
+            }
+        } else {
+            Debug.LogError("SpecialAtackButton não encontrado na cena");
         }
     }
 
@@ -29,7 +45,7 @@ public class PlayerBehaviour : MonoBehaviour{
         }
 
         if (Input.GetKey(KeyCode.Space)) {
-            specialAtack.StartAtack();
+            specialAtack.ChargeAtack();
         }
     }
 
