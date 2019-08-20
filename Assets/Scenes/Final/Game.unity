@@ -640,6 +640,7 @@ Transform:
   - {fileID: 70326073}
   - {fileID: 2105313268}
   - {fileID: 325753613}
+  - {fileID: 310197602}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1024,6 +1025,36 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!1 &310197601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310197602}
+  m_Layer: 0
+  m_Name: _Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310197602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310197601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 155812473}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &325753612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,10 +2689,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014919615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cde6fb8d491c424588682fecfedffad, type: 3}
+  m_Script: {fileID: 11500000, guid: c0ed8b3109808a542b44b963f08e136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTimeline: {fileID: 1743349645}
+  spawnPosition: {x: 0.5, y: 6, z: 0}
+  spawnPrefabs:
+  - {fileID: 7137382873561891239, guid: 2403bd82eed59e646ab21e8a0c48b4b4, type: 3}
+  - {fileID: 7137382873561891239, guid: 4bb0e6d8bb3cf9c4e9f8108b9ad8520a, type: 3}
+  - {fileID: 7137382873561891239, guid: eb72f60dcd0bf1c41879e06d42c2b49a, type: 3}
+  enemiesParent: {fileID: 310197602}
+  initialSpawnDelay: 10
+  spawnDelay: 5
 --- !u!1 &1040898439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8421464052196839785, guid: 26ceb4284b1da284996d30b15f7e2865,
@@ -2841,7 +2879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawner: {fileID: 564375268}
-  enemySpawner: {fileID: 1014919617}
+  enemySpawner: {fileID: 0}
   hudManager: {fileID: 531395715}
   countdown: {fileID: 1468782004}
   screenShake: {fileID: 2092061523}
@@ -4321,12 +4359,6 @@ PrefabInstance:
       objectReference: {fileID: 1922715895}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea0f9f80c85cc345a25a3cc38efd47b, type: 3}
---- !u!1 &1743349645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7274256170071481214, guid: 1ea0f9f80c85cc345a25a3cc38efd47b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1743349644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1751510402
 GameObject:
   m_ObjectHideFlags: 0

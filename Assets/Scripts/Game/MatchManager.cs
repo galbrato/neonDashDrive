@@ -66,7 +66,7 @@ public class MatchManager : MonoBehaviour
     {
         countdown.OnCountdownEnd -= EndCountdown;
 
-        enemySpawner.StartSpawn();
+        //enemySpawner.StartSpawn();
         //allow player inputs
         playerReference.GetComponent<TileMovement>().canMove = true;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
