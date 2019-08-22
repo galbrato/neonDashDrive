@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyAutoSpawner : MonoBehaviour
 {
     [SerializeField] Vector3 spawnPosition;
-    [SerializeField] GameObject[] spawnPrefabs;
-    [SerializeField] Transform enemiesParent;
+    [SerializeField] GameObject[] spawnPrefabs = null;
+    [SerializeField] Transform enemiesParent = null;
     float[] spawnChance;
-    [SerializeField] float initialSpawnDelay;
-    [SerializeField] float spawnDelay;
+    [SerializeField] float initialSpawnDelay = 0;
+    [SerializeField] float spawnDelay = 0;
 
     GameObject obj;
 
@@ -27,7 +27,6 @@ public class EnemyAutoSpawner : MonoBehaviour
 
     private void Start()
     {
-        print("start");
         StartCoroutine(InitialSpawnDelay());
     }
 
@@ -49,21 +48,19 @@ public class EnemyAutoSpawner : MonoBehaviour
 
     void Spawn()
     {
-        print("spawn");
         obj = Instantiate(spawnPrefabs[ChooseRandomSpawnIndex()], spawnPosition, Quaternion.identity, enemiesParent);
     }
 
     int ChooseRandomSpawnIndex()
     {
         float randomValue = Random.value;
-        print("Random value " + randomValue);
         float currentValue = 0;
+        float maxValue = 0;
         for(int i = 0; i < spawnChance.Length; i++)
         {
-            if(randomValue >= currentValue && randomValue <= spawnChance[i])
+            maxValue += spawnChance[i];
+            if (randomValue >= currentValue && randomValue <= maxValue)
             {
-                print("Current value " + currentValue);
-
                 float distributeChance = spawnChance[i]/spawnChance.Length;
                 spawnChance[i] = distributeChance;
                 for(int j = 0; j < spawnChance.Length; j++)
@@ -71,7 +68,6 @@ public class EnemyAutoSpawner : MonoBehaviour
                     if(j != i)
                     {
                         spawnChance[j] += distributeChance;
-                        print("SpawnChance at " + j + " " + spawnChance[j]);
                     }
                 }
 

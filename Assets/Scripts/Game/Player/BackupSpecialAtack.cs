@@ -10,7 +10,7 @@ public class BackupSpecialAtack : SpecialAtack {
     bool isAtacking = false;
     bool isPressing = false;
 
-    [SerializeField]Animator SpecialAtackAnimator;
+    [SerializeField] Animator SpecialAtackAnimator = null;
     // Start is called before the first frame update
     void Start() {
         TimeCounter = 0;

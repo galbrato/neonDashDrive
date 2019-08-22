@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 4570279753430144409}
   - component: {fileID: 2362244930547031327}
   - component: {fileID: 3350385635514534689}
+  - component: {fileID: 3535279104483985887}
+  - component: {fileID: 1048279200536823820}
+  - component: {fileID: 5717377774284837886}
   m_Layer: 0
   m_Name: Drone1
   m_TagString: Untagged
@@ -101,6 +104,57 @@ MonoBehaviour:
   projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
     type: 3}
   canShoot: 1
+--- !u!61 &3535279104483985887
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469281451451163829}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.98333335, y: 0.76}
+    newSize: {x: 0.98333335, y: 0.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.98333335, y: 0.76}
+  m_EdgeRadius: 0
+--- !u!114 &1048279200536823820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469281451451163829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: PlayerProjectile
+--- !u!114 &5717377774284837886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469281451451163829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c722a4e908f714da9ec56234ad8f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3871696505935815657
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +166,9 @@ GameObject:
   - component: {fileID: 6085299553977001166}
   - component: {fileID: 1677964971954118379}
   - component: {fileID: 4395431633640240269}
+  - component: {fileID: 565746266152936006}
+  - component: {fileID: 3909365241947317510}
+  - component: {fileID: 8366987421207280977}
   m_Layer: 0
   m_Name: Drone2
   m_TagString: Untagged
@@ -202,6 +259,57 @@ MonoBehaviour:
   projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
     type: 3}
   canShoot: 1
+--- !u!61 &565746266152936006
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871696505935815657}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.98333335, y: 0.76}
+    newSize: {x: 0.98333335, y: 0.76}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.98333335, y: 0.76}
+  m_EdgeRadius: 0
+--- !u!114 &3909365241947317510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871696505935815657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag: PlayerProjectile
+--- !u!114 &8366987421207280977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871696505935815657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c722a4e908f714da9ec56234ad8f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7137382873561891239
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,3 +375,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac6afb5f159d14439a469ace04c49e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyDelay: 5

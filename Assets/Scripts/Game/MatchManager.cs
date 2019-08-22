@@ -17,8 +17,8 @@ public class MatchManager : MonoBehaviour
     int shotLevel = 1; //temp
 
     [Space(20)]
-    [SerializeField] ScreenShake screenShake;
-    [SerializeField] float respawnDelay;
+    [SerializeField] ScreenShake screenShake = null;
+    [SerializeField] float respawnDelay = 2;
     [SerializeField] int lifeCount = 3;
 
     // Start is called before the first frame update

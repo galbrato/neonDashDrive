@@ -287,4 +287,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949c7c02a384e75469442b9cafedc697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safetyOffset: 2
+  safetyOffset: 1

@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
 {
     bool isPaused = false;
 
-    [SerializeField] Animator pauseAnimator;
+    [SerializeField] Animator pauseAnimator = null;
 
     public void TogglePause()
     {

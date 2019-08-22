@@ -7,7 +7,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GameObject[] playerPrefab = null;
     [SerializeField] Vector3 spawnPosition = new Vector3(0,0,0);
     [SerializeField] Transform tilesGrid = null;
-    [SerializeField] int spawnTileIndex;
+    [SerializeField] int spawnTileIndex = 0;
     [SerializeField] Transform spawnParent = null;
 
     [Header("Initial Values")]
