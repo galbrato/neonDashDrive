@@ -90,24 +90,29 @@ public class TouchController : PlayerController {
                     Debug.Log("SwipeDistance : " + DeltaPosition.magnitude);
                     isToching = false;
                 }
-                if (isToching && DeltaPosition.magnitude > InputManager.TouchSwipeDeltaPosition) {
-                    //SwipeFeito
-                    Vector2 dir = Input.GetTouch(0).deltaPosition;
-                    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y)) {
-                        if (dir.x >= 0) {
-                            actualInput = InputType.Right;
+
+                if (isToching) {
+                    if (DeltaPosition.magnitude > InputManager.TouchSwipeDeltaPosition) {
+                        //SwipeFeito
+                        Vector2 dir = Input.GetTouch(0).deltaPosition;
+                        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y)) {
+                            if (dir.x >= 0) {
+                                actualInput = InputType.Right;
+                            } else {
+                                actualInput = InputType.Left;
+                            }
                         } else {
-                            actualInput = InputType.Left;
+                            if (dir.y >= 0) {
+                                actualInput = InputType.Up;
+                            } else {
+                                actualInput = InputType.Down;
+                            }
                         }
+                        Debug.Log("SwipeDistance : " + DeltaPosition.magnitude);
+                        isToching = false;
                     } else {
-                        if (dir.y >= 0) {
-                            actualInput = InputType.Up;
-                        } else {
-                            actualInput = InputType.Down;
-                        }
+                        actualInput = InputType.Confirmation;
                     }
-                    Debug.Log("SwipeDistance : " + DeltaPosition.magnitude);
-                    isToching = false;
                 }
             }
         } 
@@ -150,7 +155,7 @@ public class KeyboardController : PlayerController {
     }
 
     public override bool GetConfirmation() {
-        return Input.GetButtonUp("Submit");
+        return Input.GetKey(KeyCode.Space);
     }
 
     public override float GetHorizontal() {

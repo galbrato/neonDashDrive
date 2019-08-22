@@ -54,7 +54,7 @@ public class BackupSpecialAtack : SpecialAtack {
         return isAtacking;
     }
 
-    public override void StartAtack() {
+    public override void ChargeAtack() {
         if (!isAtacking) {
             isPressing = true;
             //Time.timeScale = 0.2f + (1 - (TimeCounter / ActivationTime)) * 0.8f;
@@ -62,17 +62,22 @@ public class BackupSpecialAtack : SpecialAtack {
             TimeCounter += Time.deltaTime;
             //Debug.Log("CARREGANDO");
             if (TimeCounter >= ActivationTime) {
-                //Debug.Log("DROP IT");
-
-                //temp
-                OnSpecialUse?.Invoke();
-                //temp
-                SpecialAtackAnimator.SetTrigger("Start");
-                AnnouncementManager.AnnouncementTheSpecial();
-                Time.timeScale = 1;
-                TimeCounter = 0;
-                isAtacking = true;
+                StartAtack();
             }
         }
+    }
+
+
+    public override void StartAtack() {
+        //Debug.Log("DROP IT");
+
+        //temp
+        OnSpecialUse?.Invoke();
+        //temp
+        SpecialAtackAnimator.SetTrigger("Start");
+        AnnouncementManager.AnnouncementTheSpecial();
+        Time.timeScale = 1;
+        TimeCounter = 0;
+        isAtacking = true;
     }
 }
