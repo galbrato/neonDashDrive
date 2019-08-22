@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour{
     TileMovement Movement;
+
+    [SerializeField]int Bombs = 1;
+    [SerializeField]int MaxBombs = 3;
     SpecialAtack specialAtack;
+
+    
      
     private void Awake() {
         Movement = GetComponent<TileMovement>();
@@ -25,9 +30,9 @@ public class PlayerBehaviour : MonoBehaviour{
         GameObject g = GameObject.Find("SpecialAtackButton");
 
         if (g != null) {
-            Button button = GetComponent<Button>();
+            Button button = g.GetComponent<Button>();
             if (button != null) {
-                button.onClick.AddListener(() => specialAtack.StartAtack());
+                button.onClick.AddListener(() => SpecialAtack());
             } else {
                 Debug.LogError("SpecialAtackButton não tem component de botão");
             }
@@ -44,8 +49,16 @@ public class PlayerBehaviour : MonoBehaviour{
             //Debug.Log("touch(" + i+ ") " + Input.GetTouch(i).fingerId);
         }
 
-        if (Input.GetKey(KeyCode.Space)) {
-            specialAtack.ChargeAtack();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            SpecialAtack();
+        }
+    }
+
+    public void SpecialAtack() {
+        if (!specialAtack.IsAtacking() && Bombs > 0) {
+            Bombs--;
+            HUDManager.instance.UpdateBombs(-1);
+            specialAtack.StartAtack();
         }
     }
 

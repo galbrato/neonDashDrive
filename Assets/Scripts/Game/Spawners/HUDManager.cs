@@ -5,6 +5,17 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
+    public static HUDManager instance = null;
+
+    void Awake() {
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+
     [SerializeField] int lifeCount = 3;
     [SerializeField] int bombCount = 1;
     [SerializeField] int points = 0;
