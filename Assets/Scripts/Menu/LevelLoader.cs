@@ -52,7 +52,7 @@ public class LevelLoader : MonoBehaviour
     IEnumerator WaitForLoad(string sceneName)
     {
         yield return new WaitForSecondsRealtime(loadDelay);
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 }

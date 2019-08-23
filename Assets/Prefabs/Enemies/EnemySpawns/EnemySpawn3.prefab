@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4570279753430144409}
   - component: {fileID: 2362244930547031327}
-  - component: {fileID: 3350385635514534689}
   - component: {fileID: 6181804398908300572}
   - component: {fileID: 7974795929483428929}
   - component: {fileID: 1952142873400887756}
+  - component: {fileID: 7443689234475605751}
   m_Layer: 0
   m_Name: Drone1
   m_TagString: Untagged
@@ -85,25 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3350385635514534689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469281451451163829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2153cc53aa4dc468b2ab69396264a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootRate: 1
-  shootMultiplier: 1
-  spawnPositions:
-  - {x: 0, y: -0.4, z: 0}
-  projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
-    type: 3}
-  canShoot: 1
 --- !u!61 &6181804398908300572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,6 +136,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c722a4e908f714da9ec56234ad8f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7443689234475605751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469281451451163829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa185199e4a03e4ba90cac34af63876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPositions:
+  - {x: 0, y: -0.4, z: 0}
+  projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
+    type: 3}
 --- !u!1 &3871696505935815657
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,10 +162,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6085299553977001166}
   - component: {fileID: 1677964971954118379}
-  - component: {fileID: 4395431633640240269}
   - component: {fileID: 2678547902495703103}
   - component: {fileID: 5499521321972939064}
   - component: {fileID: 7256482803002259356}
+  - component: {fileID: 830298654056755984}
   m_Layer: 0
   m_Name: Drone2
   m_TagString: Untagged
@@ -240,25 +237,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4395431633640240269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3871696505935815657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2153cc53aa4dc468b2ab69396264a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootRate: 1
-  shootMultiplier: 1
-  spawnPositions:
-  - {x: 0, y: -0.4, z: 0}
-  projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
-    type: 3}
-  canShoot: 1
 --- !u!61 &2678547902495703103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,6 +288,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c722a4e908f714da9ec56234ad8f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &830298654056755984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871696505935815657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa185199e4a03e4ba90cac34af63876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPositions:
+  - {x: 0, y: -0.4, z: 0}
+  projectilesPrefab: {fileID: 7919932114093990307, guid: fb2931304895fe249884cc1cfd79c234,
+    type: 3}
 --- !u!1 &7137382873561891239
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +315,7 @@ GameObject:
   - component: {fileID: 7137382873561891238}
   - component: {fileID: 621678744}
   - component: {fileID: 3280862796974791699}
+  - component: {fileID: 8033367567399389984}
   m_Layer: 0
   m_Name: EnemySpawn3
   m_TagString: Untagged
@@ -376,3 +371,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 5
+--- !u!114 &8033367567399389984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137382873561891239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e5ad372743f0f458c82208a79164f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyChildren:
+  - {fileID: 7443689234475605751}
+  - {fileID: 830298654056755984}

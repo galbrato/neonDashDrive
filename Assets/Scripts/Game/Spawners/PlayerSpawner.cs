@@ -10,19 +10,27 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] int spawnTileIndex = 0;
     [SerializeField] Transform spawnParent = null;
 
+    AutoShoot shootScript;
+    Animator animator;
+
     [Header("Initial Values")]
     [Header("1. AutoShoot")]
     public float shootRate = 3;
     public float shootMultiplier = 1;
 
-    //[Header("2.")]
+    [Header("2. Spawn Animation Durations")]
+    [SerializeField] float spawnDuration;
+    [SerializeField] float respawnDuration;
 
     public GameObject SpawnPlayer(int index)
     {
         GameObject obj = Instantiate(playerPrefab[index], spawnPosition, Quaternion.identity, spawnParent);
         obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
-        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, false);
+        shootScript = obj.GetComponent<AutoShoot>();
+        shootScript.SetParameters(shootRate, shootMultiplier, false);
+
+        animator = obj.GetComponent<Animator>();
         return obj;
     }
 
@@ -31,9 +39,17 @@ public class PlayerSpawner : MonoBehaviour
         obj.transform.position = spawnPosition;
         obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
-        obj.GetComponent<AutoShoot>().SetParameters(shootRate, shootMultiplier, true);
         obj.SetActive(true);
+        shootScript.SetParameters(shootRate, shootMultiplier, false);
 
         //play spawn animation then set canShoot to true
+        animator.SetTrigger("Respawn");
+        StartCoroutine(RespawnAnimationPlaying());
+    }
+
+    IEnumerator RespawnAnimationPlaying()
+    {
+        yield return new WaitForSeconds(respawnDuration);
+        shootScript.ToggleShoot();
     }
 }

@@ -8,7 +8,10 @@ public class DestroyWhenOutOfScreen : MonoBehaviour
     float screenBoundsX;
     float screenBoundsY;
     Camera mainCamera;
+    [SerializeField] float disableOffset = 0.2f;
     [SerializeField] float safetyOffset = 2;
+
+    bool disabled = false;
 
     private void Awake()
     {
@@ -24,6 +27,14 @@ public class DestroyWhenOutOfScreen : MonoBehaviour
         if (Mathf.Abs(myTransform.position.x) > screenBoundsX + safetyOffset || Mathf.Abs(myTransform.position.y) > screenBoundsY + safetyOffset)
         {
             Destroy(gameObject);
+        }
+
+        if (disabled) return;
+
+        if (Mathf.Abs(myTransform.position.x) > screenBoundsX - disableOffset || Mathf.Abs(myTransform.position.y) > screenBoundsY - disableOffset)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            disabled = true;
         }
     }
 }

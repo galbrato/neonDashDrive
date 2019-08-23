@@ -9,6 +9,7 @@ public class MatchManager : MonoBehaviour
     [SerializeField] EnemySpawner enemySpawner = null;
     [SerializeField] HUDManager hudManager = null;
     [SerializeField] Countdown countdown = null;
+    [SerializeField] GameOver gameOverScreen = null;
     //[SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
 
     GameObject playerReference;
@@ -77,6 +78,7 @@ public class MatchManager : MonoBehaviour
     public void PlayerDeath()
     {
         playerReference.GetComponent<TileMovement>().ActualTile.isOccupied = false;
+        
         playerReference.SetActive(false);
 
         ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
@@ -95,7 +97,7 @@ public class MatchManager : MonoBehaviour
         }
         else
         {
-            //gameover
+            gameOverScreen.TriggerGameOver();
         }
     }
 
