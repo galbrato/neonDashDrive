@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class EffectsController : MonoBehaviour
 {
+    public static EffectsController instance = null;
+
     public static AudioSource Source = null;
 
     // PUBLIC REFERENCES
@@ -30,6 +32,16 @@ public class EffectsController : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         Clips = new Dictionary<string, AudioClip>();
         FillClips();
         SceneManager.sceneLoaded += AddListenerToMuteButton;

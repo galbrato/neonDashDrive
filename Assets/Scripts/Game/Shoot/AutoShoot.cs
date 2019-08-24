@@ -10,6 +10,7 @@ public class AutoShoot : MonoBehaviour
     [SerializeField] Vector3[] spawnPositions = null;
 
     [SerializeField] GameObject projectilesPrefab = null;
+    [SerializeField] string projectileEffectTag;
 
     Transform projectilesParent;
 
@@ -33,6 +34,8 @@ public class AutoShoot : MonoBehaviour
 
         if (currentTime <= 0)
         {
+            EffectsController.instance?.PlayClip(projectileEffectTag);
+
             for (int i = 0; i < spawnPositions.Length; i++)
             {
                 obj = Instantiate(projectilesPrefab, transform.position + spawnPositions[i], Quaternion.identity, projectilesParent);

@@ -81,6 +81,7 @@ public class MatchManager : MonoBehaviour
         
         playerReference.SetActive(false);
 
+        EffectsController.instance?.PlayClip("Explosion");
         ExplosionSpawner.instance.SpawnPrefab(0, playerReference.transform.position);
 
         lifeCount--;

@@ -4126,8 +4126,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SourcePrefab: {fileID: 8124330817778092308, guid: adc6ad35396374b499c755dba7769ea9,
     type: 3}
-  ClipList: []
-  TagList: []
+  ClipList:
+  - {fileID: 8300000, guid: 52471e6d612de91439f136d954f9f535, type: 3}
+  - {fileID: 8300000, guid: 4b7080f50c8ae844ba1fddbcdc3ef711, type: 3}
+  - {fileID: 8300000, guid: 551136e0c6fb4154581d11318a4b842a, type: 3}
+  - {fileID: 8300000, guid: 902f96f9e203d0d40a51d69e8faaf1ab, type: 3}
+  TagList:
+  - EnemyProjectile
+  - Explosion
+  - PlayerProjectile
+  - GetPowerup
 --- !u!1 &1664779773
 GameObject:
   m_ObjectHideFlags: 0
