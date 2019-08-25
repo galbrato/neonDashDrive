@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 2383000709084008674}
   - component: {fileID: 189026545017979166}
   - component: {fileID: 7932894571909130313}
+  - component: {fileID: 1610662424271759221}
   m_Layer: 0
   m_Name: PlayerBulletStraightUp
   m_TagString: PlayerProjectile
@@ -200,7 +201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2847682364005265004, guid: 2ada3596650812c48980dc4fd8d1d51b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -287,4 +288,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949c7c02a384e75469442b9cafedc697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableOffset: 0.2
   safetyOffset: 1
+--- !u!114 &1610662424271759221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7919932114093990307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageTag:
+  - Enemy

@@ -10,19 +10,25 @@ public class AutoShoot : MonoBehaviour
     [SerializeField] Vector3[] spawnPositions = null;
 
     [SerializeField] GameObject projectilesPrefab = null;
-    [SerializeField] string projectileEffectTag;
+    [SerializeField] string projectileEffectTag = null;
 
     Transform projectilesParent;
 
     float currentTime;
     GameObject obj;
-    [SerializeField] bool canShoot = false;
+    public bool canShoot = false;
+
+    //temp
+    TileMovement movementScript;
 
     void Awake()
     {
         projectilesParent = GameObject.Find("_Projectiles").transform;
 
         currentTime = 1/shootRate;
+        
+        //temp
+        movementScript = GetComponent<TileMovement>();
     }
 
     // Update is called once per frame
@@ -46,9 +52,9 @@ public class AutoShoot : MonoBehaviour
         }
     }
 
-    public void ToggleShoot()
+    public void ToggleShoot(bool toggle)
     {
-        canShoot = !canShoot;
+        canShoot = toggle;
     }
 
     /*public void ChangeFormation(Player.ShotFormation newFormation)

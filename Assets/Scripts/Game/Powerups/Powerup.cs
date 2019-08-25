@@ -18,9 +18,9 @@ public class Powerup : MonoBehaviour
         LIFE
     }
 
-    Transform child;    
+    Transform child;
 
-    public void Awake()
+    private void Awake()
     {
         angularVelocity = Random.Range(minVelocity, maxVelocity);
         if(Random.value >= 0.5f)
@@ -31,7 +31,7 @@ public class Powerup : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         child.Rotate(new Vector3(0, 0, 1), angularVelocity);
         transform.Translate(Vector3.down*moveSpeed*Time.deltaTime);
@@ -39,9 +39,9 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.tag);
         if (collision.CompareTag("Player"))
         {
+            
             PlayerPowerupPickup pl = collision.GetComponent<PlayerPowerupPickup>();
             switch (myType)
             {

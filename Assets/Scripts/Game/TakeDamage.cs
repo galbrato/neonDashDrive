@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    [SerializeField] string takeDamageTag = null;
+    [SerializeField] string[] takeDamageTag = null;
 
     public delegate void TakeDamageDelegate();
     public TakeDamageDelegate OnTakeDamage;
@@ -16,11 +16,14 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(takeDamageTag))
+        for (int i = 0; i < takeDamageTag.Length; i++)
         {
-            Destroy(collision.gameObject);
-            //print(name);
-            OnHit();
+            if (collision.CompareTag(takeDamageTag[i]))
+            {
+                //collision.GetComponent<TakeDamage>().OnHit();
+                //print(name);
+                OnHit();
+            }
         }
     }
 }

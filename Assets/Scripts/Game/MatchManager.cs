@@ -6,10 +6,12 @@ public class MatchManager : MonoBehaviour
 {
     [SerializeField] PlayerSpawner playerSpawner = null;
 
-    [SerializeField] EnemySpawner enemySpawner = null;
+    [SerializeField] EnemyAutoSpawner enemySpawner = null;
     [SerializeField] HUDManager hudManager = null;
     [SerializeField] Countdown countdown = null;
     [SerializeField] GameOver gameOverScreen = null;
+    [SerializeField] Victory victoryScreen = null;
+    [SerializeField] ProgressBar progressBar = null;
     //[SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
 
     GameObject playerReference;
@@ -21,6 +23,9 @@ public class MatchManager : MonoBehaviour
     [SerializeField] ScreenShake screenShake = null;
     [SerializeField] float respawnDelay = 2;
     [SerializeField] int lifeCount = 3;
+
+    [Header("Temporary - No Boss")]
+    public float matchTime;
 
     // Start is called before the first frame update
     void Start()
@@ -67,10 +72,11 @@ public class MatchManager : MonoBehaviour
     {
         countdown.OnCountdownEnd -= EndCountdown;
 
-        //enemySpawner.StartSpawn();
-        //allow player inputs
+        enemySpawner.StartSpawn();
         playerReference.GetComponent<TileMovement>().canMove = true;
-        playerReference.GetComponent<AutoShoot>().ToggleShoot(); 
+        playerReference.GetComponent<AutoShoot>().ToggleShoot(true);
+        playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial();
+        StartCoroutine(MatchTimeCounter());
     }
 
     //player methods
@@ -78,7 +84,10 @@ public class MatchManager : MonoBehaviour
     public void PlayerDeath()
     {
         playerReference.GetComponent<TileMovement>().ActualTile.isOccupied = false;
-        
+
+        playerReference.GetComponent<TileMovement>().playerAlive = false;
+        playerReference.GetComponent<AutoShoot>().ToggleShoot(false);
+        playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial(false);
         playerReference.SetActive(false);
 
         EffectsController.instance?.PlayClip("Explosion");
@@ -141,19 +150,37 @@ public class MatchManager : MonoBehaviour
     public void AddBomb()
     {
         hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetBomb"));
+        playerReference.GetComponent<PlayerBehaviour>().ChangeBombs(1);
         hudManager.UpdateBombs(1);
     }
 
     public void UseBomb()
     {
-        print("use bomb");
         //hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("UseBomb"));
         //hudManager.UpdateBombs(-1);
     }
 
     public void AddLife()
     {
+        if(lifeCount < 3) lifeCount++;
         hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetLife"));
         hudManager.UpdateLives(1);
     }
+
+    //TEMPORARY
+    IEnumerator MatchTimeCounter()
+    {
+        progressBar.StartProgressCounting(matchTime);
+
+        yield return new WaitForSeconds(matchTime-5f);
+        enemySpawner.ToggleSpawn(false);
+
+        yield return new WaitForSeconds(matchTime);
+
+        playerReference.GetComponent<AutoShoot>().ToggleShoot(false);
+        playerReference.GetComponent<TileMovement>().canMove = false;
+        playerReference.GetComponent<Animator>().SetTrigger("ExitMatch");
+        victoryScreen.TriggerVictory();
+    }
+
 }

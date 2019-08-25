@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: EnemyProjectile
+  takeDamageTag: []
 --- !u!1 &2165438861000411816
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: EnemyProjectile
+  takeDamageTag: []
 --- !u!1 &2910451360813374231
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: EnemyProjectile
+  takeDamageTag: []
 --- !u!1 &4761819992536899195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: EnemyProjectile
+  takeDamageTag: []
 --- !u!1 &7538505589449833829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   ActualTile: {fileID: 0}
   VerticalDuration: 0.25
   HorizontalDuration: 0.25
+  horizontalSpacing: 0.1
   Curve:
     serializedVersion: 2
     m_Curve:
@@ -1184,7 +1185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: EnemyProjectile
+  takeDamageTag:
+  - Enemy
+  - EnemyProjectile
 --- !u!61 &784545014803198395
 BoxCollider2D:
   m_ObjectHideFlags: 0
