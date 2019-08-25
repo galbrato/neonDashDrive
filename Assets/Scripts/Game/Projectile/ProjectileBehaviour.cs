@@ -23,11 +23,17 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<TakeDamage>().OnTakeDamage += DestroyObject;
         switch(projectileType)
         {
             case ProjectileType.STRAIGHT:
                 rigid.velocity = velocity;
                 break;
         }
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

@@ -10,6 +10,8 @@ public class TileMovement : MonoBehaviour{
     [SerializeField] float VerticalDuration = 1f;
     [SerializeField] float HorizontalDuration = 1f;
 
+    [SerializeField] float horizontalSpacing = 0.1f;
+
     [SerializeField] AnimationCurve Curve = null;
     Vector2 formerPosition;
     float CurveTime;
@@ -48,12 +50,13 @@ public class TileMovement : MonoBehaviour{
         if (!isMoving) {
             return;
         }
-        Vector2 Destination = ActualTile.transform.position;
+        Vector2 Destination = ActualTile.transform.position - new Vector3(horizontalSpacing/2, 0, 0);
+        print("Destination " + Destination);
         Vector2 myPosition = transform.position;
         Vector2 Direction = Destination - myPosition;
 
         if (Direction.magnitude <= 0.01f) {
-            transform.position = ActualTile.transform.position;
+            transform.position = Destination;
             formerPosition = transform.position;
             CurveTime = 0;
 

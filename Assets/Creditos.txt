@@ -1,1 +1,3 @@
 Warning Icon - Icon made by Vectors Market from www.flaticon.com
+
+Sprite glow https://github.com/Elringus/SpriteGlow

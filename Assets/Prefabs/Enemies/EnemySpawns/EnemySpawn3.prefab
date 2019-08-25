@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7443689234475605751}
   m_Layer: 0
   m_Name: Drone1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: PlayerProjectile
+  takeDamageTag:
+  - Player
+  - PlayerProjectile
 --- !u!114 &1952142873400887756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +170,7 @@ GameObject:
   - component: {fileID: 830298654056755984}
   m_Layer: 0
   m_Name: Drone2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fa9d98a5761944b9574b823103179a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTag: PlayerProjectile
+  takeDamageTag:
+  - Player
+  - PlayerProjectile
 --- !u!114 &7256482803002259356
 MonoBehaviour:
   m_ObjectHideFlags: 0
