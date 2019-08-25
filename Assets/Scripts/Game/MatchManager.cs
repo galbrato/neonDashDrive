@@ -11,6 +11,7 @@ public class MatchManager : MonoBehaviour
     [SerializeField] Countdown countdown = null;
     [SerializeField] GameOver gameOverScreen = null;
     [SerializeField] Victory victoryScreen = null;
+    [SerializeField] ProgressBar progressBar = null;
     //[SerializeField] PlayerAttributes playerAttributes = new PlayerAttributes();
 
     GameObject playerReference;
@@ -73,7 +74,7 @@ public class MatchManager : MonoBehaviour
 
         enemySpawner.StartSpawn();
         playerReference.GetComponent<TileMovement>().canMove = true;
-        playerReference.GetComponent<AutoShoot>().ToggleShoot();
+        playerReference.GetComponent<AutoShoot>().ToggleShoot(true);
         playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial();
         StartCoroutine(MatchTimeCounter());
     }
@@ -84,6 +85,7 @@ public class MatchManager : MonoBehaviour
     {
         playerReference.GetComponent<TileMovement>().ActualTile.isOccupied = false;
 
+        playerReference.GetComponent<TileMovement>().playerAlive = false;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(false);
         playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial(false);
         playerReference.SetActive(false);
@@ -148,18 +150,19 @@ public class MatchManager : MonoBehaviour
     public void AddBomb()
     {
         hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetBomb"));
+        playerReference.GetComponent<PlayerBehaviour>().ChangeBombs(1);
         hudManager.UpdateBombs(1);
     }
 
     public void UseBomb()
     {
-        print("use bomb");
         //hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("UseBomb"));
         //hudManager.UpdateBombs(-1);
     }
 
     public void AddLife()
     {
+        if(lifeCount < 3) lifeCount++;
         hudManager.UpdateScore(PointsLookupTable.instance.FetchPointValue("GetLife"));
         hudManager.UpdateLives(1);
     }
@@ -167,6 +170,8 @@ public class MatchManager : MonoBehaviour
     //TEMPORARY
     IEnumerator MatchTimeCounter()
     {
+        progressBar.StartProgressCounting(matchTime);
+
         yield return new WaitForSeconds(matchTime-5f);
         enemySpawner.ToggleSpawn(false);
 

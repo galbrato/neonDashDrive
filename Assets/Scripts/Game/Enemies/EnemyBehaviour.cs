@@ -16,8 +16,9 @@ public class EnemyBehaviour : MonoBehaviour
         if (!pointsGained)
         {
             HUDManager.instance.UpdateScore(PointsLookupTable.instance.FetchPointValue("KillDrone"));
-            EffectsController.instance?.PlayClip("Explosion");
+            PowerupSpawner.instance.CheckPowerupSpawn(transform.position);
             ExplosionSpawner.instance.SpawnPrefab(0, transform.position);
+            EffectsController.instance?.PlayClip("Explosion");
             pointsGained = true;
         }
         gameObject.SetActive(false);

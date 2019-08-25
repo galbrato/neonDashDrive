@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6135514965005443180}
   - component: {fileID: 6135514965005443218}
-  - component: {fileID: 962607720935676326}
-  - component: {fileID: 9066086944316976188}
+  - component: {fileID: 1516516239}
   m_Layer: 0
   m_Name: LifePowerup
   m_TagString: Untagged
@@ -27,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135514965005443181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 0.51, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalPosition: {x: 0.96, y: 0.51, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 6708718706308949347}
   m_Father: {fileID: 0}
@@ -50,7 +49,7 @@ MonoBehaviour:
   minVelocity: 2.5
   moveSpeed: 2
   myType: 3
---- !u!61 &962607720935676326
+--- !u!61 &1516516239
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,7 +62,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02142644, y: -0.04285264}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -74,29 +73,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.6069765, y: 2.1355968}
   m_EdgeRadius: 0
---- !u!50 &9066086944316976188
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135514965005443181}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &7485690680137841777
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,13 +144,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -4583596132829291289, guid: d35ff07d30a985241a765dc1bdf6b210,
+  m_Sprite: {fileID: -9136181877773985153, guid: a196fd7d45c81894daa2c1a6277c8e0f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.02, y: 0.89}
+  m_Size: {x: 1.645, y: 1.4325}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

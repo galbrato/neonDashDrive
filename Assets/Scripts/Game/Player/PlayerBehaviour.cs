@@ -86,4 +86,11 @@ public class PlayerBehaviour : MonoBehaviour{
             Movement.MoveDown();
         }
     }
+
+    public void ChangeBombs(int change)
+    {
+        Bombs += change;
+        if (Bombs > 3) Bombs = 3;
+        else if (Bombs < 0) Bombs = 0;
+    }
 }

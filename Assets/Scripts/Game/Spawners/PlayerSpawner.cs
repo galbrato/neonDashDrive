@@ -12,6 +12,7 @@ public class PlayerSpawner : MonoBehaviour
 
     AutoShoot shootScript;
     PlayerBehaviour behaviourScript;
+    TileMovement movementScript;
     Animator animator;
 
     [Header("Initial Values")]
@@ -26,7 +27,8 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject SpawnPlayer(int index)
     {
         GameObject obj = Instantiate(playerPrefab[index], spawnPosition, Quaternion.identity, spawnParent);
-        obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
+        movementScript = obj.GetComponent<TileMovement>();
+        movementScript.ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
         shootScript = obj.GetComponent<AutoShoot>();
         behaviourScript = obj.GetComponent<PlayerBehaviour>();
@@ -52,7 +54,8 @@ public class PlayerSpawner : MonoBehaviour
     IEnumerator RespawnAnimationPlaying()
     {
         yield return new WaitForSeconds(respawnDuration);
-        shootScript.ToggleShoot();
+        movementScript.playerAlive = true;
+        shootScript.ToggleShoot(true);
         behaviourScript.ToggleSpecial();
     }
 }

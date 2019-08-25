@@ -19,7 +19,8 @@ public class TileMovement : MonoBehaviour{
     AutoShoot autoShoot;
 
     public bool isMoving;
-    
+
+    public bool playerAlive = true;
 
     public bool canMove = false;
     [SerializeField] bool willBuffer = true;
@@ -40,7 +41,7 @@ public class TileMovement : MonoBehaviour{
             Tile[] tiles = FindObjectsOfType<Tile>();
             ActualTile = tiles[Mathf.FloorToInt(tiles.Length / 2)];
             isMoving = true;
-            autoShoot.ToggleShoot();
+            if(playerAlive) autoShoot.ToggleShoot(false);
         }
 
         Move();
@@ -51,7 +52,6 @@ public class TileMovement : MonoBehaviour{
             return;
         }
         Vector2 Destination = ActualTile.transform.position - new Vector3(horizontalSpacing/2, 0, 0);
-        print("Destination " + Destination);
         Vector2 myPosition = transform.position;
         Vector2 Direction = Destination - myPosition;
 
@@ -61,7 +61,7 @@ public class TileMovement : MonoBehaviour{
             CurveTime = 0;
 
             isMoving = false;
-            autoShoot.ToggleShoot();
+            if (playerAlive) autoShoot.ToggleShoot(true);
 
             if (NextTile!=null && !NextTile.isOccupied) {
                 TileSwap(NextTile);
@@ -127,6 +127,6 @@ public class TileMovement : MonoBehaviour{
         ActualTile = newTile;
         ActualTile.isOccupied = true;
         isMoving = true;
-        autoShoot.ToggleShoot();
+        if (playerAlive) autoShoot.ToggleShoot(false);
     }
 }
