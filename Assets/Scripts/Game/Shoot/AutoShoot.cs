@@ -46,8 +46,13 @@ public class AutoShoot : MonoBehaviour
         }
     }
 
-    public void ToggleShoot()
+    public void ToggleShoot(bool toggleFalse = true)
     {
+        if (!toggleFalse)
+        {
+            canShoot = false;
+            return;
+        }
         canShoot = !canShoot;
     }
 

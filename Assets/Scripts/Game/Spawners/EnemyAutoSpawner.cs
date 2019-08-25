@@ -8,12 +8,16 @@ public class EnemyAutoSpawner : MonoBehaviour
     [SerializeField] GameObject[] spawnPrefabs = null;
     [SerializeField] Transform enemiesParent = null;
     float[] spawnChance;
-    [SerializeField] float initialSpawnDelay = 0;
-    [SerializeField] float spawnDelay = 0;
+    [SerializeField] float initialSpawnDelay = 10f;
+    [SerializeField] float spawnDelay = 3f;
 
     GameObject obj;
 
     bool canSpawn = true;
+
+    [Header("Temporary")]
+    public float difficultyIncreaseRate = 0.1f;
+    public float minSpawnRate = 1f;
 
     private void Awake()
     {
@@ -25,7 +29,7 @@ public class EnemyAutoSpawner : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void StartSpawn()
     {
         StartCoroutine(InitialSpawnDelay());
     }
@@ -46,8 +50,19 @@ public class EnemyAutoSpawner : MonoBehaviour
         }
     }
 
+    public void ToggleSpawn(bool toggleFalse = true)
+    {
+        if (!toggleFalse)
+        {
+            canSpawn = false;
+            return;
+        }
+        canSpawn = !canSpawn;
+    }
+
     void Spawn()
     {
+        if(spawnDelay > minSpawnRate) spawnDelay -= difficultyIncreaseRate;
         obj = Instantiate(spawnPrefabs[ChooseRandomSpawnIndex()], spawnPosition, Quaternion.identity, enemiesParent);
     }
 

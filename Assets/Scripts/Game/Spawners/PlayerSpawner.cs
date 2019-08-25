@@ -11,6 +11,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] Transform spawnParent = null;
 
     AutoShoot shootScript;
+    PlayerBehaviour behaviourScript;
     Animator animator;
 
     [Header("Initial Values")]
@@ -28,6 +29,7 @@ public class PlayerSpawner : MonoBehaviour
         obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
         shootScript = obj.GetComponent<AutoShoot>();
+        behaviourScript = obj.GetComponent<PlayerBehaviour>();
         shootScript.SetParameters(shootRate, shootMultiplier, false);
 
         animator = obj.GetComponent<Animator>();
@@ -51,5 +53,6 @@ public class PlayerSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDuration);
         shootScript.ToggleShoot();
+        behaviourScript.ToggleSpecial();
     }
 }

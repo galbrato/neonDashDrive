@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour{
     [SerializeField]int MaxBombs = 3;
     SpecialAtack specialAtack;
 
-    
+    bool canUseSpecial = false;
      
     private void Awake() {
         Movement = GetComponent<TileMovement>();
@@ -54,8 +54,18 @@ public class PlayerBehaviour : MonoBehaviour{
         }
     }
 
+    public void ToggleSpecial(bool toggleFalse = true)
+    {
+        if (!toggleFalse)
+        {
+            canUseSpecial = false;
+            return;
+        }
+        canUseSpecial = !canUseSpecial;
+    }
+
     public void SpecialAtack() {
-        if (!specialAtack.IsAtacking() && Bombs > 0) {
+        if (!specialAtack.IsAtacking() && Bombs > 0 && canUseSpecial) {
             Bombs--;
             HUDManager.instance.UpdateBombs(-1);
             specialAtack.StartAtack();
