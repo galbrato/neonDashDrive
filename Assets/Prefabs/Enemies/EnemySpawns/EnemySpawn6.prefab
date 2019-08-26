@@ -142,6 +142,7 @@ MonoBehaviour:
   takeDamageTag:
   - Player
   - PlayerProjectile
+  - Obstacle
 --- !u!114 &5167046978785225484
 MonoBehaviour:
   m_ObjectHideFlags: 0

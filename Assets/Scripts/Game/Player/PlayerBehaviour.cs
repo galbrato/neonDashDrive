@@ -54,14 +54,9 @@ public class PlayerBehaviour : MonoBehaviour{
         }
     }
 
-    public void ToggleSpecial(bool toggleFalse = true)
+    public void ToggleSpecial(bool toggle)
     {
-        if (!toggleFalse)
-        {
-            canUseSpecial = false;
-            return;
-        }
-        canUseSpecial = !canUseSpecial;
+        canUseSpecial = toggle;
     }
 
     public void SpecialAtack() {

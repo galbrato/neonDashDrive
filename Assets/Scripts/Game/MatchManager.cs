@@ -75,7 +75,7 @@ public class MatchManager : MonoBehaviour
         enemySpawner.StartSpawn();
         playerReference.GetComponent<TileMovement>().canMove = true;
         playerReference.GetComponent<AutoShoot>().ToggleShoot(true);
-        playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial();
+        playerReference.GetComponent<PlayerBehaviour>().ToggleSpecial(true);
         StartCoroutine(MatchTimeCounter());
     }
 
@@ -170,15 +170,21 @@ public class MatchManager : MonoBehaviour
     //TEMPORARY
     IEnumerator MatchTimeCounter()
     {
+        Debug.Log("Start match counter! -> " + matchTime + " seconds");
         progressBar.StartProgressCounting(matchTime);
 
         yield return new WaitForSeconds(matchTime-5f);
+
+        Debug.Log("Stop enemy spawning!");
         enemySpawner.ToggleSpawn(false);
 
-        yield return new WaitForSeconds(matchTime);
+        yield return new WaitForSeconds(5f);
 
-        playerReference.GetComponent<AutoShoot>().ToggleShoot(false);
-        playerReference.GetComponent<TileMovement>().canMove = false;
+        Debug.Log("End game!");
+        //playerReference.GetComponent<AutoShoot>().ToggleShoot(false);
+        playerReference.GetComponent<AutoShoot>().enabled = false;
+        //playerReference.GetComponent<TileMovement>().canMove = false;
+        playerReference.GetComponent<TileMovement>().enabled = false;
         playerReference.GetComponent<Animator>().SetTrigger("ExitMatch");
         victoryScreen.TriggerVictory();
     }

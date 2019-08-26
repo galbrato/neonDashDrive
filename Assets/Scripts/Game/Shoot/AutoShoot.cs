@@ -40,7 +40,7 @@ public class AutoShoot : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            EffectsController.instance?.PlayClip(projectileEffectTag);
+            //EffectsController.instance?.PlayClip(projectileEffectTag);
 
             for (int i = 0; i < spawnPositions.Length; i++)
             {
