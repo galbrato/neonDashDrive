@@ -303,3 +303,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takeDamageTag:
   - Player
+  - Obstacle

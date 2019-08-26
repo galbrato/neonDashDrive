@@ -146,6 +146,7 @@ MonoBehaviour:
   takeDamageTag:
   - Player
   - PlayerProjectile
+  - Obstacle
 --- !u!114 &8366987421207280977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 2108660387289228941, guid: 328ddc743224c254487b0dd83e7d806c,
         type: 3}
       propertyPath: takeDamageTag.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2108660387289228941, guid: 328ddc743224c254487b0dd83e7d806c,
         type: 3}
@@ -305,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: takeDamageTag.Array.data[1]
       value: PlayerProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108660387289228941, guid: 328ddc743224c254487b0dd83e7d806c,
+        type: 3}
+      propertyPath: takeDamageTag.Array.data[2]
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 328ddc743224c254487b0dd83e7d806c, type: 3}

@@ -23,6 +23,7 @@ public class PlayerSpawner : MonoBehaviour
     [Header("2. Spawn Animation Durations")]
     [SerializeField] float spawnDuration;
     [SerializeField] float respawnDuration;
+    [SerializeField] float blinkDuration;
 
     public GameObject SpawnPlayer(int index)
     {
@@ -41,7 +42,7 @@ public class PlayerSpawner : MonoBehaviour
     public void RespawnPlayer(GameObject obj)
     {
         obj.transform.position = spawnPosition;
-        obj.GetComponent<TileMovement>().ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
+        movementScript.ActualTile = tilesGrid.GetChild(spawnTileIndex).GetComponent<Tile>();
         //set initial attributes
         obj.SetActive(true);
         shootScript.SetParameters(shootRate, shootMultiplier, false);
@@ -53,9 +54,14 @@ public class PlayerSpawner : MonoBehaviour
 
     IEnumerator RespawnAnimationPlaying()
     {
+        Debug.Log("Start respawn animation! -> " + respawnDuration + " seconds");
         yield return new WaitForSeconds(respawnDuration);
         movementScript.playerAlive = true;
+        Debug.Log("Set player alive! -> " + movementScript.playerAlive);
+
+        yield return new WaitForSeconds(blinkDuration);
+        Debug.Log("Start shooting!");
         shootScript.ToggleShoot(true);
-        behaviourScript.ToggleSpecial();
+        behaviourScript.ToggleSpecial(true);
     }
 }

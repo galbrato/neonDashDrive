@@ -82,7 +82,7 @@ public class TileMovement : MonoBehaviour{
     }
 
     public void MoveUp() {
-        if (ActualTile.upTile != null && canMove) {
+        if (ActualTile.upTile != null && canMove && playerAlive) {
             if (isMoving) {
                 if(willBuffer)NextTile = ActualTile.upTile;
             } else if (!ActualTile.upTile.isOccupied) {
@@ -92,7 +92,7 @@ public class TileMovement : MonoBehaviour{
         return;  
     }
     public void MoveDown() {
-        if (ActualTile.downTile != null && canMove) {
+        if (ActualTile.downTile != null && canMove && playerAlive) {
             if (isMoving) {
                 if (willBuffer) NextTile = ActualTile.downTile;
             } else if (!ActualTile.downTile.isOccupied) {
@@ -102,7 +102,7 @@ public class TileMovement : MonoBehaviour{
         return;
     }
     public void MoveRight() {
-        if (ActualTile.rightTile != null && canMove) {
+        if (ActualTile.rightTile != null && canMove && playerAlive) {
             if (isMoving) {
                 if (willBuffer) NextTile = ActualTile.rightTile;
             } else if (!ActualTile.rightTile.isOccupied) {
@@ -112,7 +112,7 @@ public class TileMovement : MonoBehaviour{
         return;
     }
     public void MoveLeft() {
-        if (ActualTile.leftTile != null && canMove) {
+        if (ActualTile.leftTile != null && canMove && playerAlive) {
             if (isMoving) {
                 if (willBuffer) NextTile = ActualTile.leftTile;
             } else if (!ActualTile.leftTile.isOccupied) {
