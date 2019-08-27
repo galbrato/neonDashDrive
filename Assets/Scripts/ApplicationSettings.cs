@@ -7,6 +7,6 @@ public class ApplicationSettings : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = 60;
-        //Screen.SetResolution(360, 640, false);
+        Screen.SetResolution(360, 640, false);
     }
 }
