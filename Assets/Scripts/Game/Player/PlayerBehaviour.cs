@@ -20,12 +20,12 @@ public class PlayerBehaviour : MonoBehaviour{
     // Start is called before the first frame update
     void Start()
     {
-        if (Input.touchSupported) {
+        /*if (Input.touchSupported) {
             Debug.Log("Touch funfa");
             InputManager.MakeTouchPlayer(0);
         } else {
             Debug.Log("Touch não funfa");
-        }
+        }*/
 
         GameObject g = GameObject.Find("SpecialAtackButton");
 
