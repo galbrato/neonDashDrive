@@ -8954,6 +8954,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2846398323522293515, guid: 3ade6203fb4952e499f2a84bbfd83303,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: http://jams.gamejolt.io/gamejamplus2019/games/neon-dash-drive/430750
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ade6203fb4952e499f2a84bbfd83303, type: 3}
 --- !u!1001 &4748658530808658131
@@ -9026,7 +9031,7 @@ PrefabInstance:
     - target: {fileID: 4748658530247277644, guid: 3cd37624bce18f544b5eb9420323c84b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4748658530247277644, guid: 3cd37624bce18f544b5eb9420323c84b,
         type: 3}
@@ -9036,12 +9041,12 @@ PrefabInstance:
     - target: {fileID: 4748658530247277644, guid: 3cd37624bce18f544b5eb9420323c84b,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 620.5
+      value: 842.8
       objectReference: {fileID: 0}
     - target: {fileID: 4748658530247277644, guid: 3cd37624bce18f544b5eb9420323c84b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 110.29999
+      value: 110.3
       objectReference: {fileID: 0}
     - target: {fileID: 4748658530247277644, guid: 3cd37624bce18f544b5eb9420323c84b,
         type: 3}
@@ -9072,6 +9077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748658530247277683, guid: 3cd37624bce18f544b5eb9420323c84b,
+        type: 3}
+      propertyPath: m_text
+      value: Follow our pages and vote on game at GameJolt!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cd37624bce18f544b5eb9420323c84b, type: 3}
